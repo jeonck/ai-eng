@@ -1,0 +1,145 @@
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.features {
+  padding: 3rem 0;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle p {
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.areaCard {
+  margin-bottom: 1.5rem;
+}
+
+.cardInner {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 4px solid;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 100%;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.cardInner:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.cardEmoji {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cardSubtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.valueChain {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.chainRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.chainArrow {
+  font-size: 1.5rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+.chainItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.chainItem small {
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-top: 0.25rem;
+  opacity: 0.9;
+}
+
+.foundation {
+  background: #2563EB;
+}
+
+.engine {
+  background: #7C3AED;
+}
+
+.value {
+  background: #16A34A;
+}
+
+.controlLayer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.control {
+  background: #0891B2;
+}
+
+@media screen and (max-width: 768px) {
+  .chainRow {
+    flex-direction: column;
+  }
+  .chainArrow {
+    transform: rotate(90deg);
+  }
+}
