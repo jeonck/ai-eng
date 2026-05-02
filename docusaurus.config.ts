@@ -61,6 +61,7 @@ const config: Config = {
         { type: 'docSidebar', sidebarId: 'governanceSidebar',     position: 'left', label: '🛡 거버넌스' },
         { type: 'docSidebar', sidebarId: 'interfaceSidebar',      position: 'left', label: '🤝 인터페이스' },
         { type: 'docSidebar', sidebarId: 'businessSidebar',       position: 'left', label: '📊 비즈니스 임팩트' },
+        { type: 'docSidebar', sidebarId: 'guidesSidebar',         position: 'right', label: '📖 가이드' },
       ],
     },
     footer: {

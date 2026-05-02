@@ -78,6 +78,17 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+
+  guidesSidebar: [
+    {
+      type: 'category',
+      label: '📖 가이드',
+      collapsed: false,
+      items: [
+        'guides/algolia-search',
+      ],
+    },
+  ],
 };
 
 export default sidebars;
