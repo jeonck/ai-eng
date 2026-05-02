@@ -67,6 +67,13 @@ const config: Config = {
       style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} ${SITE_TITLE}. Built with Docusaurus.`,
     },
+    algolia: {
+      appId: 'YOUR_APP_ID',
+      apiKey: 'YOUR_SEARCH_ONLY_API_KEY',
+      indexName: 'ai-eng',
+      contextualSearch: true,
+      searchPagePath: 'search',
+    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
