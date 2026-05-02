@@ -71,7 +71,7 @@ const config: Config = {
       appId: 'DURKCSGHZM',
       apiKey: 'c455569c890c1e2d2562f343311ebb29',
       indexName: 'ai-eng',
-      contextualSearch: true,
+      contextualSearch: false,
       searchPagePath: 'search',
     },
     prism: {
