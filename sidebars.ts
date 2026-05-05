@@ -45,6 +45,17 @@ const sidebars: SidebarsConfig = {
         'governance/auditability',
         'governance/finops',
         'governance/ethics-compliance',
+        {
+          type: 'category',
+          label: 'AI-Native 설계 프레임워크',
+          collapsed: false,
+          items: [
+            'governance/ai-native-intro',
+            'governance/adr-template',
+            'governance/debt-register',
+            'governance/pr-checklist',
+          ],
+        },
       ],
     },
   ],
@@ -86,17 +97,6 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'guides/algolia-search',
-        {
-          type: 'category',
-          label: 'AI-Native 설계 프레임워크',
-          collapsed: false,
-          items: [
-            'guides/ai-native/intro',
-            'guides/ai-native/adr-template',
-            'guides/ai-native/debt-register',
-            'guides/ai-native/pr-checklist',
-          ],
-        },
       ],
     },
   ],

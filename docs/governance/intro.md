@@ -18,6 +18,7 @@ flowchart TD
     A --> D["감사 가능성<br/>Auditability"]
     A --> E["비용 효율성<br/>FinOps"]
     A --> F["윤리 & 규제 준수<br/>Compliance"]
+    A --> G["AI-Native 설계<br/>코드 품질 통제"]
 
     style A fill:#0891B2,stroke:#0E7490,color:#fff
     style B fill:#2563EB,stroke:#1D4ED8,color:#fff
@@ -25,6 +26,7 @@ flowchart TD
     style D fill:#EA580C,stroke:#C2410C,color:#fff
     style E fill:#16A34A,stroke:#15803D,color:#fff
     style F fill:#1E3A5F,stroke:#1E3A5F,color:#fff
+    style G fill:#0891B2,stroke:#0E7490,color:#fff
 ```
 
 ## 핵심 구성 요소
@@ -36,6 +38,7 @@ flowchart TD
 | **감사 가능성** | AI 결과물의 추적 가능한 로그 및 사후 검증 체계 |
 | **FinOps** | AI 비용을 거버넌스 차원에서 관리하는 지속 가능성 확보 |
 | **윤리 & 규제 준수** | AI 윤리 가이드라인, EU AI Act 등 법규 대응 |
+| **AI-Native 설계** | ADR·기술부채·PR 체크리스트로 AI 생성 코드 품질 통제 |
 
 ## 보안을 넘어 FinOps로
 
@@ -49,3 +52,4 @@ flowchart TD
 - [ ] Hallucination 탐지 메커니즘이 프로덕션에 적용되어 있는가?
 - [ ] 월별 AI 비용이 예산 대비 추적 및 최적화되고 있는가?
 - [ ] EU AI Act 등 관련 규제 준수 상태를 정기적으로 검토하는가?
+- [ ] AI 생성 코드가 ADR 기준에 맞게 작성되고 있는가?
