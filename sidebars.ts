@@ -29,6 +29,7 @@ const sidebars: SidebarsConfig = {
         'orchestration/agent-interface',
         'orchestration/state-management',
         'orchestration/workflow-automation',
+        'orchestration/ai-skills',
       ],
     },
   ],
