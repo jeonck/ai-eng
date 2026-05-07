@@ -8,9 +8,11 @@ title: Natural Language Processing
 ## I. 인간의 언어와 기계의 소통, NLP 개요
 
 ```mermaid
-graph LR
-    A1["자연어(Text/Speech)"] -- "이해(NLU)" --> B1["기계적 표현(Vector)"]
-    B1 -- "생성(NLG)" --> C1["자연어 결과물"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["비정형 자연어 데이터"] -- "수치화 및 문맥 기반 이해" --> B1["기계적 지능 기반 자연어 서비스"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 인간이 사용하는 자연어를 컴퓨터가 이해, 분석, 생성할 수 있도록 하는 인공지능의 핵심 연구 분야  
@@ -26,10 +28,10 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["원문 데이터"] --> B2["전처리<br/>(Tokenizing/Cleaning)"]
-    B2 --> C2["임베딩<br/>(Embedding)"]
-    C2 --> D2["모델링<br/>(RNN/Transformer)"]
-    D2 --> E2["태스크 수행<br/>(Classification/QA)"]
+    A2["원문 데이터"] --> B2["전처리\n(Tokenizing/Cleaning)"]
+    B2 --> C2["임베딩\n(Embedding)"]
+    C2 --> D2["모델링\n(RNN/Transformer)"]
+    D2 --> E2["태스크 수행\n(Classification/QA)"]
 ```
 
 ### 나. 핵심 기술 및 기법
@@ -38,7 +40,7 @@ graph TD
 | :--- | :--- | :--- |
 | **전처리** | **Tokenization**, **Stemming**, **Stopword Removal** | 텍스트를 최소 단위로 분리하고 노이즈 제거 |
 | **임베딩** | **Word2Vec**, **GloVe**, **FastText** | 단어를 고차원 공간상의 밀집 벡터로 변환 |
-| **구문 분석** | **POS Tagging**, **NER** (개체명 인식) | 문장 성분 파악 및 주요 정보 추출 |
+| **구문 분석** | **POS Tagging**, **NER**(개체명 인식) | 문장 성분 파악 및 주요 정보 추출 |
 | **문맥 이해** | **Attention Mechanism**, **Self-Attention** | 단어 간의 상관관계를 파악하여 중요도 부여 |
 
 ## III. NLP의 주요 태스크 및 발전 단계
@@ -46,7 +48,7 @@ graph TD
 | 단계 | 핵심 모델 | 주요 특징 |
 | :--- | :--- | :--- |
 | **규칙 기반** | 정규 표현식, 사전 기반 | 정해진 규칙 내에서만 동작, 확장성 부족 |
-| **통계 기반** | **N-gram**, **TF-IDF** | 단어 빈도와 통계적 확률에 의존 |
+| **통계 기반** | **N**-**gram**, **TF**-**IDF** | 단어 빈도와 통계적 확률에 의존 |
 | **딥러닝 기반** | **RNN**, **LSTM**, **CNN** | 문맥의 특징을 자동 학습하기 시작 |
 | **거대 모델** | **BERT**, **GPT**, **T5** | 대규모 사전 학습( **Pre-training** )을 통한 범용 성능 |
 

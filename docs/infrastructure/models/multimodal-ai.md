@@ -8,11 +8,11 @@ title: Multimodal AI
 ## I. 감각의 통합과 다중 모달리티, Multimodal AI 개요
 
 ```mermaid
-graph TD
-    A1["Text"] --> D1["Joint Embedding<br/>(공통 벡터 공간)"]
-    B1["Image"] --> D1
-    C1["Audio"] --> D1
-    D1 --> E1["통합 이해 및 생성"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["개별 모달리티별 분절적 인지"] -- "교차 모달리티 학습 및 정렬" --> B1["인간 수준의 다중 감각 통합 인지"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 텍스트, 이미지, 오디오, 비디오 등 서로 다른 유형의 데이터( **Modality** )를 동시에 입력받아 관계를 파악하고 결과물을 생성하는 인공지능 기술  
@@ -28,8 +28,8 @@ graph TD
 
 ```mermaid
 graph LR
-    A2["Modality A<br/>(Encoder)"] --> C2["Fusion<br/>(결합)"]
-    B2["Modality B<br/>(Encoder)"] --> C2
+    A2["Modality A\n(Encoder)"] --> C2["Fusion\n(결합)"]
+    B2["Modality B\n(Encoder)"] --> C2
     C2 --> D2["Decision/Generation"]
 ```
 
@@ -38,8 +38,8 @@ graph LR
 | 구분 | 주요 모델/기술 | 상세 설명 |
 | :--- | :--- | :--- |
 | **대조 학습** | **CLIP** | 이미지와 텍스트 쌍을 대조하여 유사한 의미를 가깝게 학습 |
-| **생성 모델** | **Stable Diffusion**, **DALL-E** | 텍스트 조건부 이미지 생성 ( **Text-to-Image** ) |
-| **멀티모달 LLM** | **GPT-4o**, **Claude 3.5**, **Gemini** | 이미지 이해와 텍스트 추론이 통합된 거대 모델 |
+| **생성 모델** | **Stable Diffusion**, **DALL**-**E** | 텍스트 조건부 이미지 생성 ( **Text-to-Image** ) |
+| **멀티모달 LLM** | **GPT**-4o, **Claude** 3.5, **Gemini** | 이미지 이해와 텍스트 추론이 통합된 거대 모델 |
 | **비디오 생성** | **Sora** | 시공간적 일관성을 유지하며 영상 생성 |
 
 ## III. Multimodal AI의 활용 및 발전 방향

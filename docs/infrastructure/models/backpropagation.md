@@ -8,13 +8,11 @@ title: Backpropagation
 ## I. 오차의 역방향 전파와 연쇄 법칙, Backpropagation 개요
 
 ```mermaid
-graph RL
-    A1["입력층"] <-->|"가중치 조정(ΔW)"| B1["은닉층"]
-    B1 <-->|"오차 전파(Error)"| C1["출력층"]
-
-    style A1 fill:#2563EB,stroke:#1D4ED8,color:#fff
-    style B1 fill:#7C3AED,stroke:#6D28D9,color:#fff
-    style C1 fill:#EA580C,stroke:#C2410C,color:#fff
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["출력층 오차 발생"] -- "연쇄 법칙 기반 미분값 전파" --> B1["각 층 가중치 최적 갱신"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 신경망의 출력값과 실제값 사이의 오차( **Error** )를 역방향으로 전파하여, 각 층의 가중치( **Weights** )를 효율적으로 업데이트하는 미분 기반의 학습 알고리즘  
@@ -30,10 +28,9 @@ graph RL
 
 ```mermaid
 graph TD
-    A2["순전파 수행<br/>(출력값 계산)"] --> B2["손실 함수 계산<br/>(오차 측정)"]
-    B2 --> C2["역전파 수행<br/>(기울기 계산)"]
-    C2 --> D2["가중치 업데이트<br/>(최적화)"]
-    D2 -- "수렴 시까지 반복" --> A2
+    A2["순전파 수행\n(출력값 계산)"] --> B2["손실 함수 계산\n(오차 측정)"]
+    B2 --> C2["역전파 수행\n(기울기 계산)"]
+    C2 --> D2["가중치 업데이트\n(최적화)"]
 ```
 
 ### 나. 핵심 구성 요소 및 수학적 원리
@@ -47,7 +44,7 @@ graph TD
 
 ## III. Backpropagation의 한계와 극복 기술
 
-| 항목 | 한계점 (Issues) | 극복 기술 (Solutions) |
+| 항목 | 한계점(Issues) | 극복 기술(Solutions) |
 | :--- | :--- | :--- |
 | **기울기 소실** | 층이 깊어질수록 기울기가 0에 수렴 ( **Vanishing** ) | **ReLU**, **Batch Norm**, **ResNet** |
 | **기울기 폭주** | 기울기가 급격히 커져 학습이 불안정 ( **Exploding** ) | **Gradient Clipping**, **Weight Initialization** |

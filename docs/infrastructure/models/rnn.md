@@ -8,10 +8,11 @@ title: Recurrent Neural Networks
 ## I. 순차 데이터의 기억과 처리, RNN 개요
 
 ```mermaid
-graph LR
-    A1["현재 입력(X_t)"] --> B1["은닉 상태(H_t)"]
-    B1 -- "순환(Recursive)" --> B1
-    B1 --> C1["출력(Y_t)"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["개별적 데이터 입력"] -- "순환 연결을 통한 상태 유지" --> B1["문맥이 반영된 시퀀스 처리"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 유닛 간의 연결이 순환 구조를 이루어 과거의 정보를 현재의 처리에 반영함으로써 시계열이나 텍스트 같은 순차적 데이터( **Sequential Data** )를 처리하는 신경망  
@@ -42,9 +43,9 @@ graph LR
 | 모델명 | 특징 및 메커니즘 | 해결 과제 |
 | :--- | :--- | :--- |
 | **Vanilla RNN** | 가장 단순한 순환 구조 | 단기 기억 문제 |
-| **LSTM** | **Forget/Input/Output Gate**를 통해 장기 기억 유지 | **Long-term Dependency** |
-| **GRU** | LSTM을 간소화하여 업데이트와 리셋 게이트로 구성 | 연산 효율성 향상 |
-| **Bi-RNN** | 과거와 미래의 정보를 모두 활용하기 위해 양방향으로 연결 | 문맥 이해도 향상 |
+| **LSTM** | **Forget**/**Input**/**Output Gate**를 통해 장기 기억 유지 | **Long-term Dependency** |
+| **GRU** | **LSTM**을 간소화하여 업데이트와 리셋 게이트로 구성 | 연산 효율성 향상 |
+| **Bi**-**RNN** | 과거와 미래의 정보를 모두 활용하기 위해 양방향으로 연결 | 문맥 이해도 향상 |
 
 ## III. RNN의 응용 분야 및 한계점
 
@@ -52,6 +53,6 @@ graph LR
 | :--- | :--- |
 | **주요 응용** | 기계 번역, 음성 인식, 주가 예측, 텍스트 생성 ( **Sequence Generation** ) |
 | **장기 의존성 문제** | 시퀀스가 길어질수록 앞부분의 정보가 소실되는 현상 ( **Vanishing Gradient** ) |
-| **병렬 처리 한계** | 이전 시점의 결과가 필요하여 GPU를 통한 대규모 병렬 연산이 어려움 |
+| **병렬 처리 한계** | 이전 시점의 결과가 필요하여 **GPU**를 통한 대규모 병렬 연산이 어려움 |
 
 **기술 동향**: RNN 계열은 오랜 시간 순차 데이터 처리의 표준이었으나, 병렬 처리가 가능하고 장기 의존성 문제를 획기적으로 해결한 **Transformer**의 등장 이후 많은 분야에서 대체되는 추세임

@@ -8,9 +8,11 @@ title: Large Language Model
 ## I. 거대 파라미터와 창발적 지능, LLM 개요
 
 ```mermaid
-graph LR
-    A1["대규모 데이터<br/>(Web/Books)"] -- "초거대 파라미터 학습" --> B1["사전 학습 모델<br/>(Pre-trained)"]
-    B1 -- "In-context Learning" --> C1["다양한 태스크 수행"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["단순 문장 완성 모델"] -- "초거대 파라미터 및 대규모 사전 학습" --> B1["창발적 문제 해결 및 범용 지능"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 수천억 개 이상의 파라미터( **Parameters** )를 가진 거대 신경망을 대규모 데이터로 학습시켜, 자연어 이해 및 생성 능력을 극대화한 인공지능 모델  
@@ -26,9 +28,9 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["Pre-training<br/>(Self-supervised)"] --> B2["SFT<br/>(Instruction Tuning)"]
-    B2 --> C2["RLHF<br/>(Human Alignment)"]
-    C2 --> D2["Inference<br/>(Prompt/RAG)"]
+    A2["Pre-training\n(Self-supervised)"] --> B2["SFT\n(Instruction Tuning)"]
+    B2 --> C2["RLHF\n(Human Alignment)"]
+    C2 --> D2["Inference\n(Prompt/RAG)"]
 ```
 
 ### 나. 핵심 기술 요소
@@ -44,7 +46,7 @@ graph TD
 
 | 한계점 | 상세 내용 | 해결 전략 |
 | :--- | :--- | :--- |
-| **환각 현상** | 사실이 아닌 내용을 그럴듯하게 답변 ( **Hallucination** ) | **RAG**, **Fact-checking** |
+| **환각 현상** | 사실이 아닌 내용을 그럴듯하게 답변 ( **Hallucination** ) | **RAG**, **Fact**-**checking** |
 | **최신성 부족** | 학습 데이터 차단 시점 이후의 정보 부재 | **Search Engine Link**, **Web Browsing** |
 | **비용 및 자원** | 학습과 추론에 막대한 컴퓨팅 자원 및 비용 발생 | **Quantization**, **Distillation**, **sLLM** |
 

@@ -8,9 +8,11 @@ title: Optimization
 ## I. 최소 손실을 향한 수치적 탐색, Optimization 개요
 
 ```mermaid
-graph TD
-    A1["초기 가중치"] -- "Gradient 계산" --> B1["기울기 반대 방향 이동"]
-    B1 -- "반복(Iteration)" --> C1["최적 가중치 도달<br/>(Global Minima)"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["초기 무작위 가중치"] -- "손실 함수 최소화 기법 적용" --> B1["최적 모델 파라미터 도달"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 모델의 출력값과 실제값의 차이인 손실 함수( **Loss Function** )를 최소화하기 위해 모델의 파라미터(가중치)를 체계적으로 조정하는 수학적 방법론  

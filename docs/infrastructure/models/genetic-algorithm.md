@@ -8,11 +8,11 @@ title: Genetic Algorithm
 ## I. 자연 선택과 진화의 공학적 모델링, Genetic Algorithm 개요
 
 ```mermaid
-graph TD
-    A1["초기 세대 생성"] --> B1["적합도 평가"]
-    B1 -- "우수 개체 선택" --> C1["교차 및 변이<br/>(Evolution)"]
-    C1 --> D1["다음 세대"]
-    D1 -- "반복" --> B1
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["초기 무작위 해 집합"] -- "유전 연산 및 자연 선택" --> B1["최적화된 해 수렴"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 생물의 진화 과정인 자연 선택( **Natural Selection** )과 유전 법칙을 모방하여 최적화 문제의 해를 찾는 확률적 탐색 알고리즘  
@@ -28,19 +28,19 @@ graph TD
 
 ```mermaid
 graph LR
-    A2["Selection<br/>(선택)"] --> B2["Crossover<br/>(교차)"]
-    B2 --> C2["Mutation<br/>(변이)"]
+    A2["Selection\n(선택)"] --> B2["Crossover\n(교차)"]
+    B2 --> C2["Mutation\n(변이)"]
 ```
 
 ### 나. 알고리즘 구성 요소 및 상세 기능
 
 | 구성 요소 | 상세 설명 | 비고 |
 | :--- | :--- | :--- |
-| **염색체 (Chromosome)** | 문제의 해를 나타내는 데이터 구조 (주로 이진수나 벡터) | **Individual** |
-| **적합도 함수 (Fitness)** | 개체가 최적해에 얼마나 가까운지 평가하는 척도 | **Objective Function** |
-| **선택 (Selection)** | 적합도가 높은 개체를 다음 세대의 부모로 선정 (예: 룰렛 휠, 토너먼트) | **Survival of Fittest** |
-| **교차 (Crossover)** | 두 부모의 유전 정보를 결합하여 새로운 자손 생성 | **Exploitation** |
-| **변이 (Mutation)** | 유전 정보의 일부를 무작위로 변경하여 다양성 유지 및 국소해 탈출 | **Exploration** |
+| **염색체**(Chromosome) | 문제의 해를 나타내는 데이터 구조 (주로 이진수나 벡터) | **Individual** |
+| **적합도 함수**(Fitness) | 개체가 최적해에 얼마나 가까운지 평가하는 척도 | **Objective Function** |
+| **선택**(Selection) | 적합도가 높은 개체를 다음 세대의 부모로 선정 (예: 룰렛 휠, 토너먼트) | **Survival of Fittest** |
+| **교차**(Crossover) | 두 부모의 유전 정보를 결합하여 새로운 자손 생성 | **Exploitation** |
+| **변이**(Mutation) | 유전 정보의 일부를 무작위로 변경하여 다양성 유지 및 국소해 탈출 | **Exploration** |
 
 ## III. 유전 알고리즘의 활용 및 한계점
 
