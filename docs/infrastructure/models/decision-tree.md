@@ -28,10 +28,10 @@ graph TD
 
 ```mermaid
 graph TD
-    A2["루트 노드\n(Root Node)"] -- "정보 이득 최적화" --> B2["내부 노드\n(Internal Node)"]
-    B2 -- "불순도 감소" --> C2["리프 노드\n(Leaf Node)"]
-    B2 -- "규칙 적용" --> D2["내부 노드\n(Internal Node)"]
-    D2 -- "최종 결정" --> E2["리프 노드\n(Leaf Node)"]
+    A2["루트 노드<br/>(Root Node)"] -- "정보 이득 최적화" --> B2["내부 노드<br/>(Internal Node)"]
+    B2 -- "불순도 감소" --> C2["리프 노드<br/>(Leaf Node)"]
+    B2 -- "규칙 적용" --> D2["내부 노드<br/>(Internal Node)"]
+    D2 -- "최종 결정" --> E2["리프 노드<br/>(Leaf Node)"]
 ```
 
 ### 나. 주요 지표 및 구성 요소

@@ -10,7 +10,7 @@ title: Optimization
 ```mermaid
 graph TD
     A1["초기 가중치"] -- "Gradient 계산" --> B1["기울기 반대 방향 이동"]
-    B1 -- "반복(Iteration)" --> C1["최적 가중치 도달\n(Global Minima)"]
+    B1 -- "반복(Iteration)" --> C1["최적 가중치 도달<br/>(Global Minima)"]
 ```
 
 **정의**: 모델의 출력값과 실제값의 차이인 손실 함수( **Loss Function** )를 최소화하기 위해 모델의 파라미터(가중치)를 체계적으로 조정하는 수학적 방법론  

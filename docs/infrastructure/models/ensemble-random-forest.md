@@ -13,7 +13,7 @@ graph TD
     A1 -- "Bootstrap" --> C1["Subset 2"]
     B1 --> D1["Decision Tree 1"]
     C1 --> E1["Decision Tree 2"]
-    D1 --> F1["Aggregating\n(Voting/Average)"]
+    D1 --> F1["Aggregating<br/>(Voting/Average)"]
     E1 --> F1
     F1 --> G1["최종 예측 결과"]
 ```

@@ -10,7 +10,7 @@ title: Genetic Algorithm
 ```mermaid
 graph TD
     A1["초기 세대 생성"] --> B1["적합도 평가"]
-    B1 -- "우수 개체 선택" --> C1["교차 및 변이\n(Evolution)"]
+    B1 -- "우수 개체 선택" --> C1["교차 및 변이<br/>(Evolution)"]
     C1 --> D1["다음 세대"]
     D1 -- "반복" --> B1
 ```
@@ -28,8 +28,8 @@ graph TD
 
 ```mermaid
 graph LR
-    A2["Selection\n(선택)"] --> B2["Crossover\n(교차)"]
-    B2 --> C2["Mutation\n(변이)"]
+    A2["Selection<br/>(선택)"] --> B2["Crossover<br/>(교차)"]
+    B2 --> C2["Mutation<br/>(변이)"]
 ```
 
 ### 나. 알고리즘 구성 요소 및 상세 기능

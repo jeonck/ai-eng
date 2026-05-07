@@ -9,7 +9,7 @@ title: Large Language Model
 
 ```mermaid
 graph LR
-    A1["대규모 데이터\n(Web/Books)"] -- "초거대 파라미터 학습" --> B1["사전 학습 모델\n(Pre-trained)"]
+    A1["대규모 데이터<br/>(Web/Books)"] -- "초거대 파라미터 학습" --> B1["사전 학습 모델<br/>(Pre-trained)"]
     B1 -- "In-context Learning" --> C1["다양한 태스크 수행"]
 ```
 
@@ -26,9 +26,9 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["Pre-training\n(Self-supervised)"] --> B2["SFT\n(Instruction Tuning)"]
-    B2 --> C2["RLHF\n(Human Alignment)"]
-    C2 --> D2["Inference\n(Prompt/RAG)"]
+    A2["Pre-training<br/>(Self-supervised)"] --> B2["SFT<br/>(Instruction Tuning)"]
+    B2 --> C2["RLHF<br/>(Human Alignment)"]
+    C2 --> D2["Inference<br/>(Prompt/RAG)"]
 ```
 
 ### 나. 핵심 기술 요소

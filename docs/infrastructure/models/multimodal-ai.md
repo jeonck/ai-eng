@@ -9,7 +9,7 @@ title: Multimodal AI
 
 ```mermaid
 graph TD
-    A1["Text"] --> D1["Joint Embedding\n(공통 벡터 공간)"]
+    A1["Text"] --> D1["Joint Embedding<br/>(공통 벡터 공간)"]
     B1["Image"] --> D1
     C1["Audio"] --> D1
     D1 --> E1["통합 이해 및 생성"]
@@ -28,8 +28,8 @@ graph TD
 
 ```mermaid
 graph LR
-    A2["Modality A\n(Encoder)"] --> C2["Fusion\n(결합)"]
-    B2["Modality B\n(Encoder)"] --> C2
+    A2["Modality A<br/>(Encoder)"] --> C2["Fusion<br/>(결합)"]
+    B2["Modality B<br/>(Encoder)"] --> C2
     C2 --> D2["Decision/Generation"]
 ```
 

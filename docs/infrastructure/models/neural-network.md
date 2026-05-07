@@ -9,8 +9,8 @@ title: Neural Network
 
 ```mermaid
 graph LR
-    A1["입력층\n(Input)"] -- "가중치\n(Weights)" --> B1["은닉층\n(Hidden)"]
-    B1 -- "활성화 함수\n(Activation)" --> C1["출력층\n(Output)"]
+    A1["입력층<br/>(Input)"] -- "가중치<br/>(Weights)" --> B1["은닉층<br/>(Hidden)"]
+    B1 -- "활성화 함수<br/>(Activation)" --> C1["출력층<br/>(Output)"]
 ```
 
 **정의**: 인간의 뇌 구조인 뉴런의 동작 방식을 모방하여, 다층의 노드와 가중치( **Weights** ) 결합을 통해 데이터의 비선형적 패턴을 학습하는 인공신경망 알고리즘  
@@ -26,10 +26,10 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["데이터 입력"] --> B2["순전파\n(Forward Propagation)"]
-    B2 --> C2["손실 계산\n(Loss Function)"]
-    C2 --> D2["역전파\n(Backpropagation)"]
-    D2 --> E2["가중치 업데이트\n(Optimizer)"]
+    A2["데이터 입력"] --> B2["순전파<br/>(Forward Propagation)"]
+    B2 --> C2["손실 계산<br/>(Loss Function)"]
+    C2 --> D2["역전파<br/>(Backpropagation)"]
+    D2 --> E2["가중치 업데이트<br/>(Optimizer)"]
     E2 -- "반복 학습" --> B2
 ```
 

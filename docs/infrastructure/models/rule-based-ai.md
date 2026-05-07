@@ -25,8 +25,8 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["사용자 입력"] --> B2["추론 엔진\n(Inference Engine)"]
-    C2["지식 베이스\n(Knowledge Base)"] -- "규칙 제공" --> B2
+    A2["사용자 입력"] --> B2["추론 엔진<br/>(Inference Engine)"]
+    C2["지식 베이스<br/>(Knowledge Base)"] -- "규칙 제공" --> B2
     B2 -- "전방/후방 추론" --> D2["최종 결론"]
 ```
 

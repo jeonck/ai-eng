@@ -9,8 +9,12 @@ title: Support Vector Machines
 
 ```mermaid
 graph LR
-    A1["클래스 A"] <--- "Margin" --- B1["결정 경계\n(Hyperplane)"]
-    B1 --- "Margin" ---> C1["클래스 B"]
+    A1["클래스 A"] <-->|"Margin"| B1["결정 경계<br/>(Hyperplane)"]
+    B1 <-->|"Margin"| C1["클래스 B"]
+
+    style A1 fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style B1 fill:#7C3AED,stroke:#6D28D9,color:#fff
+    style C1 fill:#EA580C,stroke:#C2410C,color:#fff
 ```
 
 **정의**: 두 클래스 사이의 거리인 마진( **Margin** )을 최대화하는 초평면( **Hyperplane** )을 찾아 데이터를 분류하거나 회귀를 수행하는 지도 학습 알고리즘  
@@ -26,8 +30,8 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["선형 분리 불가 데이터"] --> B2["커널 트릭 적용\n(고차원 매핑)"]
-    B2 --> C2["최적 초평면 탐색\n(마진 최대화)"]
+    A2["선형 분리 불가 데이터"] --> B2["커널 트릭 적용<br/>(고차원 매핑)"]
+    B2 --> C2["최적 초평면 탐색<br/>(마진 최대화)"]
     C2 --> D2["강력한 분류 모델 완성"]
 ```
 

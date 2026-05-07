@@ -26,9 +26,9 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["Input Image"] --> B2["Convolution Layer\n(특징 추출)"]
-    B2 --> C2["Pooling Layer\n(차원 축소)"]
-    C2 --> D2["Fully Connected\n(분류/회귀)"]
+    A2["Input Image"] --> B2["Convolution Layer<br/>(특징 추출)"]
+    B2 --> C2["Pooling Layer<br/>(차원 축소)"]
+    C2 --> D2["Fully Connected<br/>(분류/회귀)"]
     D2 --> E2["Final Output"]
 ```
 

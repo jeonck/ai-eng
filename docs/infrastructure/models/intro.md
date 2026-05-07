@@ -9,7 +9,7 @@ title: 개요 및 기술 진화도
 
 ```mermaid
 graph LR
-    A1["명시적 규칙\n(Rule-based)"] -- "데이터 기반 학습\n(Machine Learning)" --> B1["자율적 지능\n(Generative AI)"]
+    A1["명시적 규칙<br/>(Rule-based)"] -- "데이터 기반 학습<br/>(Machine Learning)" --> B1["자율적 지능<br/>(Generative AI)"]
 ```
 
 **정의**: 단순한 논리 회로와 규칙에서 시작하여, 데이터로부터 스스로 패턴을 학습하고 인간 수준의 생성 및 추론이 가능한 시스템으로 발전해 온 기술적 여정  

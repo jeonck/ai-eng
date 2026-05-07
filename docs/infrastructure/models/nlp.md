@@ -26,10 +26,10 @@ graph LR
 
 ```mermaid
 graph TD
-    A2["원문 데이터"] --> B2["전처리\n(Tokenizing/Cleaning)"]
-    B2 --> C2["임베딩\n(Embedding)"]
-    C2 --> D2["모델링\n(RNN/Transformer)"]
-    D2 --> E2["태스크 수행\n(Classification/QA)"]
+    A2["원문 데이터"] --> B2["전처리<br/>(Tokenizing/Cleaning)"]
+    B2 --> C2["임베딩<br/>(Embedding)"]
+    C2 --> D2["모델링<br/>(RNN/Transformer)"]
+    D2 --> E2["태스크 수행<br/>(Classification/QA)"]
 ```
 
 ### 나. 핵심 기술 및 기법
