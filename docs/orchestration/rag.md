@@ -64,6 +64,8 @@ reranked = reranker.rank(query, results, top_k=5)
 4. 실제 관련 문서 검색 정확도 향상
 ```
 
+> **더 나아가기**: GraphRAG, Agentic RAG 등 차세대 검증 중심의 전략은 [RAG 2.0](./rag-2-0) 페이지를 참고하십시오.
+
 ## RAG 평가 지표
 
 | 지표 | 설명 | 목표값 |

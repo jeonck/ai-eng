@@ -5,12 +5,14 @@ title: Naïve Bayes
 
 # Naïve Bayes
 
-## I. 조건부 확률 기반의 독립성 가정, Naïve Bayes 개요
+## I. 독립성 가정 기반의 고속 확률 분류, Naïve Bayes 개요
 
 ```mermaid
-graph LR
-    A1["특징 데이터(X)"] -- "베이즈 정리 적용" --> B1["사후 확률 계산<br/>(Posterior)"]
-    B1 --> C1["최종 클래스 판별"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["특징 간 독립성 가정"] -- "베이즈 정리 기반 확률 계산" --> B1["효율적인 클래스 분류"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 베이즈 정리( **Bayes' Theorem** )를 적용하여 모든 특징( **Feature** )이 서로 독립이라는 나이브(순진한) 가정하에 데이터를 분류하는 확률 모델  
@@ -25,11 +27,9 @@ graph LR
 ### 가. Naïve Bayes의 메커니즘
 
 ```mermaid
-graph TD
-    A2["입력 데이터 X"] --> B2["사전 확률(Prior) 계산"]
-    B2 --> C2["우도(Likelihood) 추정"]
-    C2 --> D2["사후 확률(Posterior) 도출"]
-    D2 -- "MAP Decision Rule" --> E2["최종 클래스 결정"]
+graph LR
+    A2["특징 데이터(X)"] -- "베이즈 정리 적용" --> B2["사후 확률 계산<br/>(Posterior)"]
+    B2 --> C2["최종 클래스 판별"]
 ```
 
 ### 나. 주요 확률 분포 모델 및 상세 기능

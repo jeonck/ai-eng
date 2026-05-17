@@ -5,13 +5,14 @@ title: K-Nearest-Neighbor Algorithm
 
 # K-Nearest-Neighbor (K-NN)
 
-## I. 근접 이웃과의 유사성 기반 분류, K-NN 개요
+## I. 유사성 기반의 직관적 분류, K-NN 개요
 
 ```mermaid
-graph TD
-    A1["새로운 데이터(Query)"] -- "거리 측정" --> B1["가장 가까운 K개 이웃"]
-    B1 -- "다수결(Classification)" --> C1["최종 클래스 판별"]
-    B1 -- "평균(Regression)" --> D1["수치 예측"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["데이터 간 공간적 유사성"] -- "가장 가까운 K개 이웃 탐색" --> B1["다수결 기반 레이블 결정"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 새로운 데이터 포인트와 기존 데이터셋 사이의 거리를 측정하여, 가장 가까운 **K** 개의 이웃 데이터의 레이블에 따라 결과를 분류하거나 예측하는 인스턴스 기반 학습( **Instance-based Learning** ) 알고리즘  
@@ -26,11 +27,10 @@ graph TD
 ### 가. K-NN의 추론 메커니즘
 
 ```mermaid
-graph LR
-    A2["데이터 입력"] --> B2["거리 측정\n(Euclidean/Manhattan)"]
-    B2 --> C2["K개 근접 이웃 선택"]
-    C2 --> D2["가중치 적용 및 집계"]
-    D2 --> E2["최종 분류 및 예측"]
+graph TD
+    A2["새로운 데이터(Query)"] -- "거리 측정" --> B2["가장 가까운 K개 이웃"]
+    B2 -- "다수결(Classification)" --> C2["최종 클래스 판별"]
+    B2 -- "평균(Regression)" --> D2["수치 예측"]
 ```
 
 ### 나. 핵심 구성 요소 및 상세 기능

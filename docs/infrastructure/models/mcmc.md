@@ -5,13 +5,14 @@ title: Markov Chain Monte Carlo
 
 # Markov Chain Monte Carlo (MCMC)
 
-## I. 확률 분포의 샘플링과 상태 전이, MCMC 개요
+## I. 복잡한 분포의 수치적 샘플링, MCMC 개요
 
 ```mermaid
-graph LR
-    A1["현재 상태"] -- "제안 분포 기반 이동" --> B1["후보 상태"]
-    B1 -- "수락 확률 적용" --> C1["다음 상태(수락/거절)"]
-    C1 -- "충분한 반복" --> D1["목표 분포 수렴"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["샘플링 곤란한 복잡 분포"] -- "마르코프 연쇄 평형 상태 이용" --> B1["목표 분포의 수치적 근사"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 직접 샘플링하기 어려운 복잡한 목표 확률 분포로부터, 마르코프 연쇄( **Markov Chain** )의 정상 분포를 이용하여 수치적으로 샘플을 추출하는 알고리즘  

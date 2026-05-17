@@ -5,11 +5,14 @@ title: Rule-based AI
 
 # Rule-based AI
 
-## I. 확정적 로직의 구현, Rule-based AI 개요
+## I. 명시적 규칙 기반의 논리 추론, Rule-based AI 개요
 
 ```mermaid
-graph LR
-    A1["데이터 입력"] -- "IF-THEN 규칙 적용" --> B1["결과 도출"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["도메인 전문가의 지식"] -- "IF-THEN 규칙 체계화" --> B1["결정론적 의사결정 수행"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 지식 베이스와 추론 엔진을 바탕으로, 사람이 사전에 정의한 명시적인 규칙( **Explicit Rules** )에 따라 의사결정을 수행하는 인공지능 시스템  
@@ -24,10 +27,8 @@ graph LR
 ### 가. Rule-based AI의 추론 메커니즘
 
 ```mermaid
-graph TD
-    A2["사용자 입력"] --> B2["추론 엔진<br/>(Inference Engine)"]
-    C2["지식 베이스<br/>(Knowledge Base)"] -- "규칙 제공" --> B2
-    B2 -- "전방/후방 추론" --> D2["최종 결론"]
+graph LR
+    A2["데이터 입력"] -- "IF-THEN 규칙 적용" --> B2["결과 도출"]
 ```
 
 ### 나. 핵심 구성 요소 및 상세 기능

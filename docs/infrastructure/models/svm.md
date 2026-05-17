@@ -5,12 +5,14 @@ title: Support Vector Machines
 
 # Support Vector Machines (SVM)
 
-## I. 최대 마진을 통한 결정 경계의 최적화, SVM 개요
+## I. 마진 최대화를 통한 최적 경계 탐색, SVM 개요
 
 ```mermaid
-graph LR
-    A1["클래스 A"] <-->|"Margin"| B1["결정 경계\n(Hyperplane)"]
-    B1 <-->|"Margin"| C1["클래스 B"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["선형 분리 곤란 데이터"] -- "커널 트릭 및 마진 극대화" --> B1["강건한 결정 경계 확보"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 데이터가 위치한 공간에서 두 클래스 사이의 거리인 마진( **Margin** )을 최대화하는 최적의 초평면( **Hyperplane** )을 찾아 분류와 회귀를 수행하는 지도 학습 알고리즘  
@@ -25,11 +27,9 @@ graph LR
 ### 가. SVM의 분류 메커니즘
 
 ```mermaid
-graph TD
-    A2["입력 데이터"] --> B2["공간 매핑 및 커널 적용"]
-    B2 --> C2["마진 최대화 초평면 탐색"]
-    C2 --> D2["서포트 벡터 선정"]
-    D2 --> E2["최종 분류 모델 확정"]
+graph LR
+    A2["클래스 A"] <-->|"Margin"| B2["결정 경계\n(Hyperplane)"]
+    B2 <-->|"Margin"| C2["클래스 B"]
 ```
 
 ### 나. 핵심 구성 요소 및 상세 기능

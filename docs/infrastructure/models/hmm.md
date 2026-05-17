@@ -5,13 +5,14 @@ title: Hidden Markov Model
 
 # Hidden Markov Model (HMM)
 
-## I. 관찰 가능한 현상 뒤의 숨겨진 상태, HMM 개요
+## I. 관찰 데이터 뒤의 숨겨진 상태 추론, HMM 개요
 
 ```mermaid
-graph TD
-    A1["은닉 상태(S)\n(Hidden)"] -- "전이 확률" --> B1["은닉 상태(S+1)"]
-    A1 -- "방출 확률" --> C1["관측 데이터(O)\n(Observable)"]
-    B1 -- "방출 확률" --> D1["관측 데이터(O+1)"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["관측 가능한 시퀀스"] -- "은닉 상태 전이 확률 분석" --> B1["숨겨진 상태 경로 복원"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 시스템의 상태를 직접 관찰할 수는 없지만, 관찰 가능한 데이터를 통해 숨겨진 상태( **Hidden State** )의 전이와 확률을 추론하는 통계적 마르코프 모델  
@@ -26,11 +27,10 @@ graph TD
 ### 가. HMM의 추론 메커니즘
 
 ```mermaid
-graph LR
-    A2["초기 상태"] --> B2["상태 전이(A)"]
-    B2 --> C2["관측 데이터 방출(B)"]
-    C2 --> D2["파라미터 학습(EM)"]
-    D2 --> B2
+graph TD
+    A2["은닉 상태(S)\n(Hidden)"] -- "전이 확률" --> B2["은닉 상태(S+1)"]
+    A2 -- "방출 확률" --> C2["관측 데이터(O)\n(Observable)"]
+    B2 -- "방출 확률" --> D2["관측 데이터(O+1)"]
 ```
 
 ### 나. 핵심 구성 요소 및 3대 알고리즘

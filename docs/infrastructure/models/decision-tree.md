@@ -5,14 +5,14 @@ title: Decision Tree
 
 # Decision Tree
 
-## I. 데이터의 분할과 정복, Decision Tree 개요
+## I. 규칙 기반의 직관적 의사결정, Decision Tree 개요
 
 ```mermaid
-graph TD
-    A1["전체 데이터"] -- "특정 조건(Feature)" --> B1["그룹 A (Pure)"]
-    A1 -- "특정 조건(Feature)" --> C1["그룹 B (Impure)"]
-    C1 -- "추가 분할" --> D1["그룹 B-1"]
-    C1 -- "추가 분할" --> E1["그룹 B-2"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["복잡한 데이터 패턴"] -- "조건별 순차적 분기" --> B1["명시적 의사결정 경로"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 전체 학습 데이터를 특정 조건에 따라 하위 그룹으로 분할하여 나무( **Tree** ) 구조로 도식화하고, 이를 통해 분류와 회귀를 수행하는 규칙 기반의 알고리즘  

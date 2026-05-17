@@ -8,14 +8,11 @@ title: Ensemble & Random Forest
 ## I. 집단 지성을 통한 예측력 극대화, Ensemble & Random Forest 개요
 
 ```mermaid
-graph TD
-    A1["학습 데이터"] -- "Bootstrap" --> B1["Subset 1"]
-    A1 -- "Bootstrap" --> C1["Subset 2"]
-    B1 --> D1["Decision Tree 1"]
-    C1 --> E1["Decision Tree 2"]
-    D1 --> F1["Aggregating\n(Voting/Average)"]
-    E1 --> F1
-    F1 --> G1["최종 예측 결과"]
+%%{init: { 'theme': 'base', 'themeVariables': { 'edgeLabelBackground': '#fff' }}}%%
+flowchart LR
+    A1["개별 모델의 편향과 분산"] -- "다수 모델 결과의 결합(Voting)" --> B1["강건한 일반화 성능 확보"]
+    style A1 fill:#f9f9f9,stroke:#333,stroke-width:1px
+    style B1 fill:#e1f5fe,stroke:#01579b,stroke-width:1px
 ```
 
 **정의**: 여러 개의 약한 학습기( **Weak Learner** )를 유기적으로 결합하여 하나의 강력한 학습기를 만드는 기법( **Ensemble** )과 이를 의사결정나무에 적용한 **Random Forest** 알고리즘  
