@@ -41,7 +41,12 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: undefined,
         },
-        blog: false,
+        blog: {
+          showReadingTime: true,
+          editUrl: undefined,
+          blogSidebarTitle: '전체 글 보기',
+          blogSidebarCount: 'ALL',
+        },
         theme: { customCss: './src/css/custom.css' },
       } satisfies Preset.Options,
     ],
@@ -62,6 +67,7 @@ const config: Config = {
         { type: 'docSidebar', sidebarId: 'interfaceSidebar',      position: 'left', label: '🤝 인터페이스' },
         { type: 'docSidebar', sidebarId: 'businessSidebar',       position: 'left', label: '📊 비즈니스 임팩트' },
         { type: 'docSidebar', sidebarId: 'guidesSidebar',         position: 'right', label: '📖 가이드' },
+        { to: '/blog', label: '✍️ 블로그', position: 'right' },
       ],
     },
     footer: {
