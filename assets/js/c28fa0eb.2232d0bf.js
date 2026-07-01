@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_=self.webpackChunk_||[]).push([["7897"],{24614(e){e.exports=JSON.parse('{"tags":[{"label":"llm","permalink":"/ai-eng/blog/tags/llm","count":1},{"label":"cost-optimization","permalink":"/ai-eng/blog/tags/cost-optimization","count":1},{"label":"prompt-engineering","permalink":"/ai-eng/blog/tags/prompt-engineering","count":1}]}')}}]);
