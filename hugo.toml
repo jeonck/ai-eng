@@ -1,0 +1,79 @@
+baseURL = "https://jeonck.github.io/ai-eng/"
+title = "AI Engineering"
+theme = "hextra"
+defaultContentLanguage = "en"
+enableRobotsTXT = true
+enableGitInfo = false
+hasCJKLanguage = false
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[outputs]
+  home = ["html"]
+  page = ["html"]
+  section = ["html", "rss"]
+
+[params]
+  description = "A practical framework for AI engineering — organized into five domains: Infrastructure, Orchestration, Interface, Business Impact, and Governance."
+  displayUpdatedDate = true
+  dateFormat = "January 2, 2006"
+
+  [params.navbar]
+    displayTitle = true
+    displayLogo = false
+    width = "full"
+
+  [params.page]
+    width = "normal"
+
+  [params.theme]
+    default = "system"
+    displayToggle = true
+
+  [params.footer]
+    enable = true
+    displayCopyright = true
+    displayPoweredBy = false
+    width = "normal"
+
+  [params.search]
+    enable = true
+    type = "flexsearch"
+    [params.search.flexsearch]
+      index = "content"
+      tokenize = "forward"
+
+  [params.toc]
+    displayTags = true
+
+  [params.highlight.copy]
+    enable = true
+    display = "hover"
+
+[[menu.main]]
+  name = "Search"
+  weight = 0
+  [menu.main.params]
+    type = "search"
+
+[[menu.main]]
+  name = "Docs"
+  pageRef = "/docs"
+  weight = 1
+
+[[menu.main]]
+  name = "Blog"
+  pageRef = "/blog"
+  weight = 2
+
+[[menu.main]]
+  name = "GitHub"
+  url = "https://github.com/jeonck/ai-eng"
+  weight = 99
+  [menu.main.params]
+    icon = "github"
