@@ -58,6 +58,8 @@ layout: hextra-home
   >}}
 {{< /hextra/feature-grid >}}
 
+<div class="content hx-w-full hx-mt-6">
+
 ## The Value Chain
 
 AI technology is not managed as five isolated topics — it moves through a single chain that turns technical foundations into measurable business value, with governance acting as a control layer across every stage.
@@ -84,3 +86,5 @@ flowchart LR
 - **Interface** is where those systems meet people — design, modality, literacy, feedback.
 - **Business Impact** is where all of the above is converted into measurable value — ROI, speed, new business models, scale.
 - **Governance** does not sit at the end of the chain; it wraps every stage with guardrails, observability, auditability, cost control, and compliance.
+
+</div>
