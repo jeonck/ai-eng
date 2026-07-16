@@ -3,8 +3,6 @@ title: "AI Skill Design"
 weight: 8
 ---
 
-# AI Skill Design
-
 **Skill-Based Orchestration** — a technique for encapsulating repetitive AI workflows into reusable packages
 
 ## What Is a Skill?

@@ -3,8 +3,6 @@ title: "Model Selection & Tuning"
 weight: 3
 ---
 
-# Model Selection & Tuning
-
 Selecting the right LLM for the purpose, plus fine-tuning and quantization strategies
 
 ## Model Selection Framework

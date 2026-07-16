@@ -3,8 +3,6 @@ title: "Multimodal Interface"
 weight: 3
 ---
 
-# Multimodal Interface
-
 Designing LMM-based interfaces that leverage diverse input modalities such as images, voice, and diagrams
 
 ## The multimodal AI ecosystem

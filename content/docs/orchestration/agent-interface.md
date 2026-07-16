@@ -3,8 +3,6 @@ title: "Agent Interface"
 weight: 5
 ---
 
-# Agent Interface
-
 Integrating external tools (APIs), multi-agent collaboration, and execution control
 
 ## Types of Agent Architectures

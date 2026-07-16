@@ -3,8 +3,6 @@ title: "Rule-based AI"
 weight: 2
 ---
 
-# Rule-based AI
-
 ## I. Logical inference driven by explicit rules — overview of Rule-based AI
 
 ```mermaid

@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# 📊 AI Business Impact
-
 **Value & ROI** — quantitatively assessing whether AI adoption is actually converting into business value.
 
 ## Role of this domain

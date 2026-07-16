@@ -3,8 +3,6 @@ title: "MCP Server Management"
 weight: 7
 ---
 
-# MCP Server Management
-
 Model Context Protocol — a standard protocol for connecting AI models to external context and tools
 
 ## What Is MCP?

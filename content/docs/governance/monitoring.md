@@ -3,8 +3,6 @@ title: "Monitoring & Observability"
 weight: 3
 ---
 
-# Monitoring & Observability
-
 An observability framework for tracking the quality, performance, and cost of AI systems in real time.
 
 ## The three pillars of observability

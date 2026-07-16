@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# Overview & Technology Evolution
-
 ## I. A paradigm shift in intelligence — overview of AI's technical evolution
 
 ```mermaid

@@ -3,8 +3,6 @@ title: "Ethics & Compliance"
 weight: 6
 ---
 
-# Ethics & Compliance
-
 Applying AI ethics guidelines and responding to AI regulation in Korea and abroad.
 
 ## Current AI regulatory landscape

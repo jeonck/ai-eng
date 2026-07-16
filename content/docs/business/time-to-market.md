@@ -3,8 +3,6 @@ title: "Time-to-Market"
 weight: 3
 ---
 
-# Time-to-Market
-
 The speed at which new AI technology is applied to real services — a powerful competitive advantage in its own right
 
 ## Why Time-to-Market Matters

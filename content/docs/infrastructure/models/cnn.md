@@ -3,8 +3,6 @@ title: "Convolutional Neural Network"
 weight: 15
 ---
 
-# Convolutional Neural Network (CNN)
-
 ## I. Preserving spatial information and extracting features — overview of CNN
 
 ```mermaid

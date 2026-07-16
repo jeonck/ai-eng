@@ -3,8 +3,6 @@ title: "Business Model Innovation"
 weight: 4
 ---
 
-# Business Model (BM) Innovation
-
 Developing new products and services through AI, and strategies for market entry
 
 ## Types of BM Innovation Enabled by AI

@@ -3,8 +3,6 @@ title: "AI FinOps"
 weight: 5
 ---
 
-# AI FinOps
-
 Managing AI costs at the governance level to keep AI operations sustainable.
 
 ## AI cost structure

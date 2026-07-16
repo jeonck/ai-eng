@@ -3,8 +3,6 @@ title: "Large Language Model"
 weight: 19
 ---
 
-# Large Language Model (LLM)
-
 ## I. Massive parameters and emergent intelligence — overview of LLM
 
 ```mermaid

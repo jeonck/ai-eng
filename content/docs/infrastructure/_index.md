@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# 🏗 AI Infrastructure & Architecture
-
 **Foundation & Build** — the physical and logical base that everything else in an AI system runs on.
 
 ## Role of this domain

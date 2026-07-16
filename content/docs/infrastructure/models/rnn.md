@@ -3,8 +3,6 @@ title: "Recurrent Neural Networks"
 weight: 16
 ---
 
-# Recurrent Neural Networks (RNN)
-
 ## I. Memory and processing of sequential data — overview of RNN
 
 ```mermaid

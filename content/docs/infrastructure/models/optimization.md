@@ -3,8 +3,6 @@ title: "Optimization"
 weight: 11
 ---
 
-# Optimization
-
 ## I. Numerically searching for minimal loss — overview of Optimization
 
 ```mermaid

@@ -3,8 +3,6 @@ title: "Scale-Up Strategy"
 weight: 5
 ---
 
-# Scale-Up Strategy
-
 A systematic strategy for spreading successful AI use cases company-wide
 
 ## Stages of AI Scale-Up

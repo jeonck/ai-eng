@@ -3,8 +3,6 @@ title: "State Management"
 weight: 6
 ---
 
-# State Management
-
 Strategies for maintaining continuity of reasoning across complex agent workflows
 
 ## Why State Management Matters

@@ -3,8 +3,6 @@ title: "Backpropagation"
 weight: 13
 ---
 
-# Backpropagation
-
 ## I. Propagating error backward via the chain rule — overview of Backpropagation
 
 ```mermaid

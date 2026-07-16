@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# 🛡 AI Governance
-
 **Trust & Control** — keeping AI operating safely and consistently within the boundaries a company and society set for it.
 
 ## Role of this domain

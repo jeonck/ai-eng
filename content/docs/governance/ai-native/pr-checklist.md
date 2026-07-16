@@ -3,8 +3,6 @@ title: "PR Checklist"
 weight: 4
 ---
 
-# PR Checklist
-
 A pull-request review guide that includes AI-development checks.
 
 ## How to use

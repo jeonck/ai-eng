@@ -3,8 +3,6 @@ title: "Hidden Markov Model"
 weight: 4
 ---
 
-# Hidden Markov Model (HMM)
-
 ## I. Inferring hidden states behind observed data — overview of HMM
 
 ```mermaid

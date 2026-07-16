@@ -3,8 +3,6 @@ title: "RAG Pipeline"
 weight: 3
 ---
 
-# RAG Pipeline
-
 Retrieval-Augmented Generation — the core technique for connecting AI to external knowledge
 
 ## RAG Architecture

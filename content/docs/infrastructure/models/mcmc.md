@@ -3,8 +3,6 @@ title: "Markov Chain Monte Carlo"
 weight: 5
 ---
 
-# Markov Chain Monte Carlo (MCMC)
-
 ## I. Numerical sampling of complex distributions — overview of MCMC
 
 ```mermaid

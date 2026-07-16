@@ -3,8 +3,6 @@ title: "Workflow Automation"
 weight: 7
 ---
 
-# Workflow Automation
-
 A workflow engine where AI carries out complex business logic step by step
 
 ## Defining Levels of Automation

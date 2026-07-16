@@ -3,8 +3,6 @@ title: "Feedback Loop"
 weight: 5
 ---
 
-# Feedback Loop
-
 A systematic mechanism for collecting user feedback and feeding it back into AI system improvement
 
 ## Structure of the feedback loop

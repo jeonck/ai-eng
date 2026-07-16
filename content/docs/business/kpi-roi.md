@@ -3,8 +3,6 @@ title: "KPI & ROI Analysis"
 weight: 2
 ---
 
-# KPI & ROI Analysis
-
 A metrics framework for quantitatively measuring the impact of AI adoption
 
 ## AI ROI Calculation Framework

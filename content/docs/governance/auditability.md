@@ -3,8 +3,6 @@ title: "AI Auditability"
 weight: 4
 ---
 
-# AI Auditability (Auditability)
-
 A framework for tracing why an AI system produced a given output, and for verifying it after the fact.
 
 ## Why auditability matters

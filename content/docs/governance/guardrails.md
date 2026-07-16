@@ -3,8 +3,6 @@ title: "Guardrails & Security"
 weight: 2
 ---
 
-# Guardrails & Security
-
 A multi-layered security strategy for blocking harmful content and preventing leaks of personal data and trade secrets.
 
 ## Multi-layered security architecture

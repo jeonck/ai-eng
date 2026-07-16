@@ -3,8 +3,6 @@ title: "Tech-Debt Register"
 weight: 3
 ---
 
-# 🚩 Tech-Debt Register
-
 Systematically manage AI-generated code that "**works, but needs improvement**."
 
 ## Why tech-debt management matters more with AI coding

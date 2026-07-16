@@ -3,8 +3,6 @@ title: "Prompt & Context Design"
 weight: 2
 ---
 
-# Prompt & Context Design
-
 Advanced prompt engineering and effective context construction strategies
 
 ## Principles of Prompt Structuring

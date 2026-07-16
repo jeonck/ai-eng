@@ -3,8 +3,6 @@ title: "Vector DB Optimization"
 weight: 6
 ---
 
-# Vector DB Optimization
-
 Choosing and tuning vector databases for semantic search
 
 ## How a Vector DB Works

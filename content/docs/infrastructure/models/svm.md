@@ -3,8 +3,6 @@ title: "Support Vector Machines"
 weight: 7
 ---
 
-# Support Vector Machines (SVM)
-
 ## I. Finding the optimal boundary via margin maximization — overview of SVM
 
 ```mermaid

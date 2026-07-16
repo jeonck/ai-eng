@@ -3,8 +3,6 @@ title: "AI UI/UX Design"
 weight: 2
 ---
 
-# AI UI/UX Design
-
 Design principles for conversational user interfaces (CUI) and AI-specific UX patterns
 
 ## Core principles of AI UX

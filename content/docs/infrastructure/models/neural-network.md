@@ -3,8 +3,6 @@ title: "Neural Network"
 weight: 12
 ---
 
-# Neural Network
-
 ## I. Combining biological inspiration with mathematics — overview of Neural Network
 
 ```mermaid

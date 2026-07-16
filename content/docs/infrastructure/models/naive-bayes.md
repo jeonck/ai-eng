@@ -3,8 +3,6 @@ title: "Naïve Bayes"
 weight: 3
 ---
 
-# Naïve Bayes
-
 ## I. Fast probabilistic classification based on an independence assumption — overview of Naïve Bayes
 
 ```mermaid

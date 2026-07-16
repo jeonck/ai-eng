@@ -3,8 +3,6 @@ title: "AI Literacy Education"
 weight: 4
 ---
 
-# AI Literacy Education
-
 A capability-building program that helps users make effective use of AI while understanding its limitations
 
 ## Defining AI literacy levels

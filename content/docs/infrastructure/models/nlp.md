@@ -3,8 +3,6 @@ title: "Natural Language Processing"
 weight: 18
 ---
 
-# Natural Language Processing (NLP)
-
 ## I. Communication between human language and machines — overview of NLP
 
 ```mermaid

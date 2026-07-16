@@ -3,8 +3,6 @@ title: "Data Pipelines"
 weight: 5
 ---
 
-# Data Pipelines
-
 A system for real-time data collection and cleaning for AI training and inference
 
 ## Pipeline Architecture

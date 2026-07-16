@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# 🏗️ AI-Native Design Document Framework
-
 A set of design-document templates that helps AI coding teams collaborate efficiently while keeping control over the quality of AI-generated code. The goal is to capture AI's productivity gains without losing the system's consistency and maintainability.
 
 ## Document structure

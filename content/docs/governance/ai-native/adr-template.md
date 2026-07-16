@@ -3,8 +3,6 @@ title: "ADR Template"
 weight: 2
 ---
 
-# ADR Template
-
 **Architecture Decision Record** — a document that records architecture decisions. It captures not "what was done" but **why this approach was chosen**.
 
 ## Why ADRs matter

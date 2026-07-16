@@ -3,8 +3,6 @@ title: "Ensemble & Random Forest"
 weight: 9
 ---
 
-# Ensemble & Random Forest
-
 ## I. Maximizing predictive power through collective intelligence — overview of Ensemble & Random Forest
 
 ```mermaid

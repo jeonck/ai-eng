@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# 🤝 AI Interface
-
 **Human-AI Interaction** — designing the touchpoint where users actually experience and interact with the value of AI.
 
 ## Role of this domain

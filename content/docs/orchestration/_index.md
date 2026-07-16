@@ -5,8 +5,6 @@ sidebar:
   open: true
 ---
 
-# ⚙️ AI Orchestration
-
 **System Integration & Workflow** — the core engine that combines individual technologies into intelligent workflows.
 
 ## Role of this domain

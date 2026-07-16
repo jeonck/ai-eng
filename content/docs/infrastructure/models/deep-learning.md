@@ -3,8 +3,6 @@ title: "Deep Learning"
 weight: 14
 ---
 
-# Deep Learning
-
 ## I. High-level abstraction through deep neural networks — overview of Deep Learning
 
 ```mermaid

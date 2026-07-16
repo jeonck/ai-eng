@@ -3,8 +3,6 @@ title: "K-Nearest-Neighbor Algorithm"
 weight: 6
 ---
 
-# K-Nearest-Neighbor (K-NN)
-
 ## I. Intuitive classification based on similarity — overview of K-NN
 
 ```mermaid

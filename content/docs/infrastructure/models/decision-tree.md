@@ -3,8 +3,6 @@ title: "Decision Tree"
 weight: 8
 ---
 
-# Decision Tree
-
 ## I. Intuitive rule-based decision-making — overview of Decision Tree
 
 ```mermaid

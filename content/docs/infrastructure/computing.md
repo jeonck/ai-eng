@@ -3,8 +3,6 @@ title: "Compute Resource Management"
 weight: 2
 ---
 
-# Compute Resource Management
-
 Strategies for cost-efficient operation of GPU/NPU servers and cloud infrastructure
 
 ## On-Premises vs. Cloud

@@ -3,8 +3,6 @@ title: "Genetic Algorithm"
 weight: 10
 ---
 
-# Genetic Algorithm
-
 ## I. Engineering natural selection and evolution — overview of Genetic Algorithm
 
 ```mermaid

@@ -3,8 +3,6 @@ title: "Transformer"
 weight: 17
 ---
 
-# Transformer
-
 ## I. Parallel processing and self-attention — overview of Transformer
 
 ```mermaid
