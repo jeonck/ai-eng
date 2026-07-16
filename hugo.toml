@@ -1,4 +1,4 @@
-baseURL = "https://jeonck.github.io/ai-eng/"
+baseURL = "https://ai-eng.metacog.co.kr/"
 title = "AI Engineering"
 theme = "hextra"
 defaultContentLanguage = "en"
