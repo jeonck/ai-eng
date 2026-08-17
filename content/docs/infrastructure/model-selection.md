@@ -25,7 +25,7 @@ flowchart TD
 
 ## Major LLM Comparison (2025)
 
-For real-time, objective metrics on performance, cost, and latency, see the [AI Model Benchmarking](./ai-model-benchmark) page.
+For real-time, objective metrics on performance, cost, and latency, see the [AI Model Benchmarking](/docs/infrastructure/ai-model-benchmark/) page.
 
 | Model | Provider | Strengths | Context |
 |---|---|---|---|

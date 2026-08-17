@@ -62,7 +62,7 @@ Generate a hypothetical answer to the query first, then search using that answer
 4. Retrieval accuracy for actual relevant documents improves
 ```
 
-> **Going further**: for next-generation, verification-focused strategies such as GraphRAG and Agentic RAG, see the [RAG 2.0](./rag-2-0) page.
+> **Going further**: for next-generation, verification-focused strategies such as GraphRAG and Agentic RAG, see the [RAG 2.0](/docs/orchestration/rag-2-0/) page.
 
 ## RAG Evaluation Metrics
 

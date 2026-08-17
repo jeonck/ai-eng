@@ -117,5 +117,5 @@ flowchart TD
 
 ## Related Categories
 
-- [🛡 AI Governance Overview](../governance) — hallucination monitoring, regulatory compliance
-- [📊 AI Business Impact](../business) — ROI analysis based on model cost
+- [🛡 AI Governance Overview](/docs/governance/) — hallucination monitoring, regulatory compliance
+- [📊 AI Business Impact](/docs/business/) — ROI analysis based on model cost

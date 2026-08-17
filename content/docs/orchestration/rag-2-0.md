@@ -169,5 +169,5 @@ Because it only requires **adding an evaluator layer** to an existing RAG pipeli
 
 ## Related Categories
 
-- [🏗 Infrastructure & Architecture](../infrastructure) — choosing vector DBs and LLM API providers
-- [🛡 AI Governance](../governance) — hallucination monitoring, answer trustworthiness management
+- [🏗 Infrastructure & Architecture](/docs/infrastructure/) — choosing vector DBs and LLM API providers
+- [🛡 AI Governance](/docs/governance/) — hallucination monitoring, answer trustworthiness management
