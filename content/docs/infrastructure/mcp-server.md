@@ -9,6 +9,8 @@ Model Context Protocol — a standard protocol for connecting AI models to exter
 
 The **Model Context Protocol**(MCP) is an open standard released by Anthropic in 2024 that lets AI models safely interact with external data sources, tools, and services.
 
+The current revision is **`2026-07-28`** — often called MCP 2.0 or v2, though the specification itself is versioned by date rather than by a major number. It is the largest restructuring since the protocol shipped: MCP stopped being a stateful, bidirectional session protocol and became a stateless request/response one. If you are running MCP servers as infrastructure, that change is the whole story, and it is covered in [The 2026-07-28 Revision](#the-2026-07-28-revision-stateless-mcp) below.
+
 ```mermaid
 flowchart LR
     A["AI model<br/>Claude / GPT"] --> B["MCP client"]
@@ -27,12 +29,99 @@ flowchart LR
 
 ## Core Components of MCP
 
-| Component | Role |
+| Component | Role | Status in `2026-07-28` |
+|---|---|---|
+| **Resources** | Exposes data such as files, DB records, and API responses | Active |
+| **Tools** | Defines functions/actions the AI can invoke | Active |
+| **Prompts** | Reusable prompt templates | Active |
+| **Sampling** | Lets the server request inference from the AI | Deprecated — integrate with the LLM provider API directly |
+
+## The 2026-07-28 Revision: Stateless MCP
+
+Before this revision, a client opened a session with an `initialize`/`notifications/initialized` handshake, and every subsequent request carried an `Mcp-Session-Id` header that pinned it to the server instance holding that session. That made MCP servers stateful services: sticky sessions, session stores, and connection draining on deploy.
+
+The revision removes sessions entirely. Every request is self-describing, so any instance can serve any request.
+
+```mermaid
+flowchart TD
+    A1["Before — stateful<br/>(≤ 2025-11-25)"] -->|"initialize + Mcp-Session-Id<br/>pinned for the whole session"| B1["Instance A<br/>holds session state"]
+    A2["After — stateless<br/>(2026-07-28)"] -->|"self-describing request"| LB["Load balancer<br/>plain round-robin"]
+    LB --> C1["Instance A"]
+    LB --> C2["Instance B"]
+    LB --> C3["Instance C"]
+
+    style A1 fill:#EFF6FF,stroke:#2563EB,color:#1E40AF
+    style B1 fill:#EA580C,stroke:#C2410C,color:#fff
+    style A2 fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style LB fill:#7C3AED,stroke:#6D28D9,color:#fff
+    style C1 fill:#16A34A,stroke:#15803D,color:#fff
+    style C2 fill:#16A34A,stroke:#15803D,color:#fff
+    style C3 fill:#16A34A,stroke:#15803D,color:#fff
+```
+
+### What Changed
+
+| Area | Before (`2025-11-25`) | Now (`2026-07-28`) |
+|---|---|---|
+| **Session** | `initialize` handshake + `Mcp-Session-Id` header | Removed — protocol version, client capabilities, and client identity ride in `_meta` on every request |
+| **Discovery** | Capabilities negotiated during the handshake | `server/discover` RPC, which servers **MUST** implement |
+| **Change notifications** | HTTP GET endpoint, `resources/subscribe` / `unsubscribe` | `subscriptions/listen` — one long-lived POST-response stream that clients opt into per notification type |
+| **Server-initiated requests** | Server called back to the client (`roots/list`, `sampling/createMessage`, `elicitation/create`) | Multi Round-Trip Requests — the server returns `resultType: "input_required"`, the client retries with `inputResponses` |
+| **Result shape** | Untyped result object | Every result carries a required `resultType` (`"complete"` or `"input_required"`) |
+| **Stream recovery** | SSE resumability via `Last-Event-ID` | Removed — a broken stream loses the in-flight request; the client re-issues it with a new request ID |
+| **Routing metadata** | Method name only in the JSON-RPC body | `Mcp-Method` and `Mcp-Name` required as HTTP headers, so gateways route and authorize without parsing the body |
+| **List caching** | `listChanged` notifications only | `ttlMs` and `cacheScope` (`"public"` / `"private"`) on list results, plus a deterministic tool order |
+| **Removed methods** | — | `ping`, `logging/setLevel`, `notifications/roots/list_changed` |
+
+### What a Request Carries Now
+
+Each request declares for itself what the old handshake used to establish once:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "get_weather",
+    "arguments": { "location": "New York" },
+    "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": { "extensions": {} },
+      "io.modelcontextprotocol/clientInfo": { "name": "ExampleClient", "version": "1.0.0" }
+    }
+  }
+}
+```
+
+A version the server cannot serve comes back as `UnsupportedProtocolVersionError` rather than failing a handshake. Servers that genuinely need cross-call state no longer get it from the protocol — they mint explicit handles and pass them as ordinary tool arguments.
+
+## Extensions Framework
+
+The core protocol got smaller, and everything optional moved into versioned extensions identified by a reverse-DNS name. Official extensions use the `io.modelcontextprotocol` prefix; extensions are disabled by default and require explicit opt-in.
+
+| Extension | What it adds |
 |---|---|
-| **Resources** | Exposes data such as files, DB records, and API responses |
-| **Tools** | Defines functions/actions the AI can invoke |
-| **Prompts** | Reusable prompt templates |
-| **Sampling** | Lets the server request inference from the AI |
+| **MCP Tasks** (`io.modelcontextprotocol/tasks`) | Long-running work: polling via `tasks/get`, mid-flight input via `tasks/update`, durable handles |
+| **MCP Apps** | Server-rendered interactive UI — charts, forms, players — inline in a conversation |
+| **Enterprise-Managed Authorization** | Centralized access control for enterprise deployments |
+| **OAuth Client Credentials** | Machine-to-machine authentication |
+
+Support is advertised in the `extensions` field of client capabilities (per request) and of the `server/discover` response. When only one side supports an extension, the supporting side falls back to core behavior or rejects the request if the extension is mandatory.
+
+## Deprecations and the Feature Lifecycle
+
+The revision also adopts a formal feature lifecycle — Active, Deprecated, Removed — with a **minimum twelve-month deprecation window**. Deprecated features still work; new implementations should not adopt them.
+
+| Deprecated | Suggested migration |
+|---|---|
+| **Roots** | Pass directories or files as tool parameters, resource URIs, or server configuration |
+| **Sampling** | Integrate with the LLM provider API directly |
+| **Logging** | Log to `stderr` (stdio), or use OpenTelemetry |
+| **HTTP+SSE transport** | Streamable HTTP |
+| **Dynamic Client Registration** (RFC 7591) | Client ID Metadata Documents |
+
+Authorization also hardened: authorization servers **SHOULD** return the RFC 9207 `iss` parameter and clients **MUST** validate it before redeeming an authorization code, and client credentials are bound to the issuer that minted them.
 
 ## MCP Server Configuration Example
 
@@ -60,3 +149,23 @@ flowchart LR
 - **Availability**: assess the impact on AI workflows if an MCP server goes down
 - **Performance**: monitor how tool-call latency affects overall response time
 - **Version management**: maintain backward compatibility when an MCP server's schema changes
+
+### What Statelessness Changes Operationally
+
+The `2026-07-28` revision was written to make MCP servers behave like ordinary web services, which moves several concerns off the application and onto standard infrastructure:
+
+| Concern | Before | With a stateless core |
+|---|---|---|
+| **Load balancing** | Sticky sessions required | Plain round-robin; no session affinity to configure |
+| **Scaling** | Session state limits horizontal scale-out and complicates draining on deploy | Instances are interchangeable — scale to zero, restart, and roll out freely |
+| **Gateway policy** | Routing and authorization needed body inspection | `Mcp-Method` and `Mcp-Name` headers carry what a gateway needs |
+| **Caching** | Every client polled the tool list | `ttlMs` and `cacheScope` let clients and shared intermediaries cache catalogs; deterministic tool order also improves prompt cache hit rates |
+| **Retries** | Resumable SSE streams | No resumption — a dropped stream means re-issuing the request with a new ID, so tool calls need to be safe to retry |
+| **Tracing** | Ad hoc | OpenTelemetry `traceparent`, `tracestate`, and `baggage` propagate through `_meta` |
+
+Two consequences worth planning for: tool handlers should be **idempotent**, because losing a stream now means a full re-issue rather than a resume; and anything that used to rely on server-held session state needs an **explicit handle** minted by the server and passed back as a tool argument.
+
+## Related Categories
+
+- [⚙️ Orchestration](/docs/orchestration/) — agent interfaces and tool-calling design that sit on top of MCP
+- [🛡 AI Governance](/docs/governance/) — authorization hardening, least-privilege tool access, auditability
