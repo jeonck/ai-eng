@@ -53,6 +53,17 @@ For real-time, objective metrics on performance, cost, and latency, see the [AI 
 - **Cost**: High (upfront investment)
 - **Effect**: High (style consistency)
 
+Fine-tuning is not a single technique. Which one applies depends on what you are trying to move — the task, or the preference:
+
+| Technique | What it does | When to reach for it | Relative cost |
+|---|---|---|---|
+| **SFT** (Supervised Fine-Tuning) | Trains on labeled prompt/response pairs to teach a task or an output format | You have curated examples of exactly what you want back | Highest — full-weight training |
+| **LoRA** | Freezes the base weights and trains small low-rank adapter matrices instead | The same goal as SFT at a fraction of the memory; adapters can be swapped per task | Moderate |
+| **QLoRA** | LoRA on top of a 4-bit quantized base model | Fine-tuning a model on a single GPU that could not otherwise hold it | Low |
+| **DPO** (Direct Preference Optimization) | Trains on chosen/rejected response pairs to align preference directly, with no separate reward model | Output is already task-correct but the tone, safety, or style is wrong | Moderate |
+
+A workable order of escalation: exhaust prompt engineering, then RAG, and only then fine-tune — SFT or LoRA/QLoRA to teach the task, DPO on top to shape preference. QLoRA depends on the quantization choices below, so treat those two decisions as one.
+
 ## Quantization
 
 Quantization strategies for reducing VRAM usage when self-hosting open-source models:

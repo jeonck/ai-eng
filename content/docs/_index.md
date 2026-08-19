@@ -57,3 +57,17 @@ flowchart LR
 | **6. Production skills** | Version control, cloud deployment, vector databases, evaluation and testing, security and privacy | [AI-Native Design Framework](governance/ai-native), [Compute Resource Management](infrastructure/computing), [AI Model Benchmarking](infrastructure/ai-model-benchmark), [Guardrails & Security](governance/guardrails) |
 
 Stages 1–3 are foundations; the rest of this site starts where they leave off. For the developer track and practice projects that exercise these stages end to end, see [AI Literacy Education](interface/ai-literacy).
+
+Two competencies sit alongside this progression rather than inside it. **Fine-tuning and quantization** matter once prompting and retrieval have been exhausted — see [Model Selection & Tuning](infrastructure/model-selection). **Serving and inference infrastructure** matters as soon as you host a model yourself rather than calling an API — see [Compute Resource Management](infrastructure/computing).
+
+### Outside Reading
+
+This framework covers the engineering practice, not the fundamentals underneath it. These open courses do, and map onto the stages above:
+
+| Stages | Resource |
+|---|---|
+| 2 | [Microsoft — Generative AI for Beginners](https://github.com/microsoft/generative-ai-for-beginners) |
+| 2 | [DAIR.AI — Prompt Engineering Guide](https://github.com/dair-ai/Prompt-Engineering-Guide) |
+| 3, 4 | [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps) — reference implementations to read |
+| 5 | [Microsoft — AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners) |
+| 2, 6 | [Maxime Labonne — LLM Course](https://github.com/mlabonne/llm-course) — model internals, fine-tuning, quantization |
