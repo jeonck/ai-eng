@@ -125,6 +125,10 @@ Authorization also hardened: authorization servers **SHOULD** return the RFC 920
 
 ## MCP Server Configuration Example
 
+### stdio — local servers
+
+A local server is a child process the client launches and talks to over stdin/stdout:
+
 ```json
 {
   "mcpServers": {
@@ -142,6 +146,87 @@ Authorization also hardened: authorization servers **SHOULD** return the RFC 920
   }
 }
 ```
+
+### Streamable HTTP — remote servers
+
+A remote server is reached over HTTP instead. The config file format is defined by the client rather than by the specification — field names vary (`"type": "http"` in some clients, `"streamable-http"` in others) — but the shape is a URL plus optional headers:
+
+```json
+{
+  "mcpServers": {
+    "internal-docs": {
+      "type": "http",
+      "url": "https://mcp.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${MCP_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+What the specification *does* define is the endpoint and the wire format. The server exposes **one MCP endpoint that accepts POST**, and every JSON-RPC message is its own POST:
+
+```http
+POST /mcp HTTP/1.1
+Content-Type: application/json
+Accept: application/json, text/event-stream
+MCP-Protocol-Version: 2026-07-28
+Mcp-Method: tools/call
+Mcp-Name: get_weather
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "get_weather",
+    "arguments": { "location": "Seattle, WA" },
+    "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientInfo": { "name": "ExampleClient", "version": "1.0.0" },
+      "io.modelcontextprotocol/clientCapabilities": {}
+    }
+  }
+}
+```
+
+| Header | Required on | Mirrors |
+|---|---|---|
+| `MCP-Protocol-Version` | every POST | `io.modelcontextprotocol/protocolVersion` in `_meta` |
+| `Mcp-Method` | all requests | `method` |
+| `Mcp-Name` | `tools/call`, `resources/read`, `prompts/get` | `params.name` or `params.uri` |
+| `Accept` | every POST | must list both `application/json` and `text/event-stream` |
+| `Mcp-Param-{Name}` | tools whose schema annotates a parameter with `x-mcp-header` | that parameter's value |
+
+The server responds with either `application/json` (one object) or `text/event-stream` (a stream scoped to that request); notifications get `202 Accepted`. Header values **MUST** match the body — a mismatch is rejected with `400 Bad Request` and JSON-RPC error `-32020` (`HeaderMismatch`). That rule exists because a gateway routing on the header and a server executing on the body would otherwise disagree about what the request was.
+
+### Serving It Behind a Proxy
+
+The transport has a few requirements that land on the proxy rather than the application:
+
+- **POST only** — respond `405 Method Not Allowed` to GET or DELETE on the MCP endpoint; the GET stream and session-terminating DELETE of earlier revisions are gone
+- **Origin validation** — servers **MUST** validate `Origin` and return `403 Forbidden` if it is present and invalid, which is what prevents DNS rebinding; local servers **SHOULD** bind to `127.0.0.1` rather than `0.0.0.0`
+- **No response buffering** — SSE responses **SHOULD** carry `X-Accel-Buffering: no`, and the proxy must not buffer, or events sit in a buffer instead of reaching the client
+- **Long-lived streams** — a `subscriptions/listen` response stays open, so read timeouts need to accommodate it; servers are encouraged to emit SSE comment lines (`:`) as keep-alives
+
+```nginx
+upstream mcp_backend {
+    server 10.0.1.11:8080;
+    server 10.0.1.12:8080;   # no sticky sessions — any instance can serve any request
+}
+
+location /mcp {
+    if ($request_method != POST) { return 405; }
+
+    proxy_pass http://mcp_backend;
+    proxy_http_version 1.1;
+    proxy_buffering off;      # SSE events must not be held in a buffer
+    proxy_read_timeout 1h;    # subscriptions/listen streams stay open
+}
+```
+
+Because streams are no longer resumable, a proxy that drops a connection costs the whole in-flight request — the client must re-issue it with a new request ID, which is the other reason tool handlers need to be idempotent.
 
 ## MCP Management Considerations from an Infrastructure Perspective
 
