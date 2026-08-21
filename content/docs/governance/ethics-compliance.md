@@ -30,6 +30,21 @@ flowchart TD
 | **Limited-risk** | Chatbots, deepfakes | Transparency obligations |
 | **Minimal risk** | Spam filters, AI in games | Self-regulation |
 
+## Responsible AI Dimensions
+
+Regulation says what is prohibited; it does not say how to build. The industry has converged on a set of dimensions that turn "responsible AI" into things that can actually be assigned, implemented, and audited. Every one of them is already a control somewhere in this framework — the value of the list is that it shows which of them you have left unattended:
+
+| Dimension | The question it asks | Where the control lives |
+|---|---|---|
+| **Fairness & bias mitigation** | Does the system produce different outcomes for different groups? | Bias review checklist below; drift checks in [Monitoring & Observability](/docs/governance/monitoring/) |
+| **Explainability** | Can we say why the system produced this output? | [AI Auditability](/docs/governance/auditability/) decision records; source citation in [RAG](/docs/orchestration/rag/) |
+| **Privacy & security** | Can the system leak data, or be made to act against its operator? | [Guardrails & Security](/docs/governance/guardrails/) — PII detection and masking, prompt-injection defense |
+| **Veracity & robustness** | Is the output actually true, and does it hold up under unusual input? | Hallucination detection in [Guardrails](/docs/governance/guardrails/); AA-Omniscience scoring in [AI Model Benchmarking](/docs/infrastructure/ai-model-benchmark/) |
+| **Transparency** | Do people know they are dealing with AI, and on what terms? | Disclosure patterns in [AI UI/UX Design](/docs/interface/ux-design/); [AI Literacy Education](/docs/interface/ai-literacy/) |
+| **Governance & accountability** | Who is answerable when it goes wrong, and how would we know? | The [Governance](/docs/governance/) domain as a whole; [AI-Native Design Framework](/docs/governance/ai-native/) for decision records |
+
+Two notes on using this as a checklist. The dimensions are not independent — an unexplainable system cannot be audited for fairness, so explainability gates the dimension above it. And each one needs a named owner: a dimension that belongs to everybody is measured by nobody.
+
 ## Applying AI ethics principles
 
 ### Anthropic's Constitutional AI approach

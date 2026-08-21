@@ -56,6 +56,23 @@ For workloads that don't require a real-time response, using the **Batch API** c
 | **Inference server** | T4, L4 | 16GB VRAM, cost-efficient |
 | **Local development** | RTX 4090 | 24GB VRAM |
 
+## Managed Platforms vs. Self-Hosting
+
+Before sizing a GPU, decide whether you should be holding one at all. There are three tiers, and they differ in what you own rather than in what the model can do:
+
+| Tier | You own | Provider owns | Billing |
+|---|---|---|---|
+| **Managed model API** | Prompts, retrieval, application code | Models, capacity, scaling, patching | Per token, or provisioned throughput |
+| **Managed ML platform** | Data, training code, model artifacts, endpoint config | Notebooks, training fleet, endpoint infrastructure | Per instance-hour, training and inference billed separately |
+| **Self-hosted serving** | Everything, down to the CUDA version | Nothing | The GPUs, whether or not traffic arrives |
+
+The two AWS entries in the comparison above sit in different tiers, and conflating them is a common planning mistake:
+
+- **Amazon Bedrock** is the managed model API tier — a single interface over foundation models from several providers, with no infrastructure to run. Its adjacent features are the ones you would otherwise assemble yourself: managed knowledge bases for [RAG](/docs/orchestration/rag/), agent orchestration, and [Bedrock Guardrails](/docs/governance/guardrails/) for input and output filtering. Google Vertex AI and Azure AI occupy the same tier.
+- **Amazon SageMaker** is the managed ML platform tier — an end-to-end environment for building, training, and deploying models you own, including classical ML on tabular data, not only foundation models. You choose the instance types and the endpoint stays up until you take it down.
+
+A useful default: start on the managed API tier, because it turns a capacity problem into a line item. Move to a platform or to self-hosting only when a concrete requirement forces it — data residency, a model no provider hosts, a fine-tune you must own, or a sustained load where per-token pricing has become more expensive than the hardware.
+
 ## Serving Open Models
 
 Self-hosting a model means running an inference server, and the serving engine decides how much of the GPU you actually get to use. On identical hardware, throughput differs by an order of magnitude between a naive request loop and a batching engine.
