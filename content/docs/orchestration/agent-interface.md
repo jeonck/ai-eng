@@ -118,6 +118,7 @@ Orchestrator Agent
 | **AutoGen** | Conversational multi-agent | Research, collaborative tasks |
 | **CrewAI** | Role-based agent teams | Business process automation |
 | **Claude Code SDK** | Official Anthropic offering, coding-focused | Development automation |
+| **OpenAI Agents SDK** | Lightweight primitives — agents, handoffs, guardrails, sessions | Staying close to the OpenAI stack |
 
 ## Error Handling Strategy
 
@@ -135,3 +136,17 @@ except ContextLengthError:
     # Context exceeded → summarize and retry
     result = agent.run_with_compression(task)
 ```
+
+### Failure Recovery
+
+The exception blocks above handle a failure once. What decides whether an agent survives production is what happens on the second, third, and hundredth failure:
+
+| Pattern | What it does | Reach for it when |
+|---|---|---|
+| **Retry with backoff** | Re-issues the call after an increasing delay, with jitter to avoid synchronized retries | The failure is transient — a timeout, a 429, a dropped stream |
+| **Fallback chain** | Routes to an alternative tool, a smaller model, or a cached answer | Degraded output beats no output |
+| **Circuit breaker** | Stops calling a dependency after N consecutive failures, then probes it periodically | A dependency is down and retries are making it worse |
+| **Checkpointing** | Resumes a multi-step run from the last completed step instead of the start — see [State Management](/docs/orchestration/state-management/) | Steps are expensive or externally visible |
+| **Dead-letter queue** | Parks the request for human review rather than dropping it | Silent loss is unacceptable |
+
+Retries only make sense when the operation is idempotent. Anything that writes — sending a message, charging a card, filing a ticket — needs an idempotency key generated before the first attempt, or a retry turns one failure into two side effects.

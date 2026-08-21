@@ -60,6 +60,7 @@ flowchart LR
 |---|---|---|
 | **Version control** | AI-assisted code still needs reviewable history — Git, branches, pull requests | [AI-Native Design Framework](/docs/governance/ai-native) |
 | **Cloud deployment** | Pick one of AWS, GCP, or Azure and ship something to it end to end | [Compute Resource Management](/docs/infrastructure/computing) |
+| **Containers & backend** | An agent is a backend service — Docker, async request handling, and a database are what carry it to production | [Compute Resource Management](/docs/infrastructure/computing) |
 | **Vector databases** | The storage layer any real RAG system depends on | [Vector DB Optimization](/docs/infrastructure/vector-db) |
 | **Evaluation & testing** | Without measurement, quality regressions ship silently | [AI Model Benchmarking](/docs/infrastructure/ai-model-benchmark) |
 | **Security & privacy** | Prompt injection, PII handling, and access control are the engineer's job | [Guardrails & Security](/docs/governance/guardrails) |
@@ -75,6 +76,18 @@ Reading about these topics is not the same as having built them. Three projects 
 | **3. AI features in an existing app** | Add summarization or recommendations to an application you have already built | Integrating AI into real product surfaces, [UI/UX design](/docs/interface/ux-design/), latency and cost trade-offs |
 
 Project 1 teaches retrieval, project 2 teaches autonomy, and project 3 teaches the part that usually decides whether an AI feature survives contact with users — how it fits into something people already use.
+
+Once those three are behind you, the next step is not a fourth chatbot. Build something that performs work rather than answering about it:
+
+| Project | What makes it hard |
+|---|---|
+| **Sales or customer-support agent** | Acts on a real system of record — retries, idempotency, and knowing when to hand off to a human |
+| **Research agent** | Plans multi-step retrieval, judges source quality, and cites what it used |
+| **Coding agent** | Executes in a sandbox and has to verify its own output |
+| **Operations agent** | Runs on a schedule against live infrastructure, where a wrong action has a blast radius |
+| **Multi-agent business workflow** | Orchestration, shared state, and failure containment across agents — see [Agent Interface](/docs/orchestration/agent-interface) and [Workflow Automation](/docs/orchestration/workflow-automation) |
+
+Then deploy it and let it fail. Measuring a live agent, finding out how it breaks, and fixing that is the part no tutorial covers — and the part that separates someone who has read about agents from someone who has run one.
 
 ## Designing the training program
 

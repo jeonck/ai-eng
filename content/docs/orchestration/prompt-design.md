@@ -73,6 +73,16 @@ Final Answer: [Conclusion]
 | **RAG injection** | Inject only the information needed | Leveraging domain knowledge |
 | **Prompt caching** | Reuse cached context for repeated content | Cost optimization |
 
+## Prompt Evaluation
+
+A prompt change that looks better on the one example you tried is not an improvement — it is an anecdote. Version control below is only useful if each version has a number attached to it:
+
+- **Keep a fixed test set** — 20–50 real inputs with known-good outputs, including the cases that previously failed
+- **Score automatically where you can** — exact match or schema validity for structured output, retrieval metrics for RAG-backed answers
+- **Use an LLM judge for the rest** — a separate model scoring against an explicit rubric, spot-checked by a human, not trusted blindly
+- **Compare against the current production prompt, not against nothing** — the question is always "better than what we ship today?"
+- **Watch for regressions** — a prompt tuned for one case commonly breaks another, which is exactly what the fixed test set catches
+
 ## Prompt Version Control
 
 Prompts need version control just like code:
