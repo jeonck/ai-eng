@@ -83,6 +83,22 @@ A prompt change that looks better on the one example you tried is not an improve
 - **Compare against the current production prompt, not against nothing** — the question is always "better than what we ship today?"
 - **Watch for regressions** — a prompt tuned for one case commonly breaks another, which is exactly what the fixed test set catches
 
+### Evaluation Tooling
+
+Tools differ mainly in whether they are built around *running experiments* or around *observing production*. Most teams end up with one of each:
+
+| Tool | Shape | Best fit |
+|---|---|---|
+| **Promptfoo** | Open-source CLI, config-driven | Comparing prompts and models side by side in CI, without adopting a platform |
+| **DeepEval** | Open-source, pytest-style assertions | Treating prompt regressions as failing unit tests in an existing test suite |
+| **Ragas** | Open-source, RAG-specific metrics | Scoring faithfulness and context quality — see [RAG evaluation metrics](/docs/orchestration/rag/) |
+| **Langfuse** | Open-source, self-hostable tracing + datasets | Keeping traces and eval data inside your own infrastructure |
+| **LangSmith** | Hosted tracing, datasets, evaluators | Teams already on LangChain or LangGraph |
+| **Braintrust** | Hosted, experiment-first | Comparing many prompt versions against a scored dataset over time |
+| **Arize Phoenix** | Open-source, OpenTelemetry-based | Unifying LLM traces with the rest of your [observability](/docs/governance/monitoring/) stack |
+
+Two cautions. Pick the tool after you have a test set, not before — a platform with nothing to score is overhead. And LLM-judge scores are model outputs like any other: they drift when the judge model changes, so pin the judge version and re-check a sample by hand.
+
 ## Prompt Version Control
 
 Prompts need version control just like code:
