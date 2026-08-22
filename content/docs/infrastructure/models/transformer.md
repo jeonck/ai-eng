@@ -1,6 +1,6 @@
 ---
 title: "Transformer"
-weight: 17
+weight: 20
 ---
 
 ## I. Parallel processing and self-attention — overview of Transformer

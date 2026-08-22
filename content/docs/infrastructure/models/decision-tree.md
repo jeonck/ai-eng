@@ -1,6 +1,6 @@
 ---
 title: "Decision Tree"
-weight: 8
+weight: 10
 ---
 
 ## I. Intuitive rule-based decision-making — overview of Decision Tree

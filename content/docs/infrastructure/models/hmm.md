@@ -1,6 +1,6 @@
 ---
 title: "Hidden Markov Model"
-weight: 4
+weight: 5
 ---
 
 ## I. Inferring hidden states behind observed data — overview of HMM

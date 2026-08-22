@@ -1,6 +1,6 @@
 ---
 title: "K-Nearest-Neighbor Algorithm"
-weight: 6
+weight: 7
 ---
 
 ## I. Intuitive classification based on similarity — overview of K-NN

@@ -1,6 +1,6 @@
 ---
 title: "Multimodal AI"
-weight: 20
+weight: 23
 ---
 
 ## I. Integrating senses across multiple modalities — overview of Multimodal AI

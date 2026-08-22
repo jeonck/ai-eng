@@ -1,6 +1,6 @@
 ---
 title: "Large Language Model"
-weight: 19
+weight: 22
 ---
 
 ## I. Massive parameters and emergent intelligence — overview of LLM

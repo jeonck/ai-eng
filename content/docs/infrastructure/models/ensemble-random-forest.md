@@ -1,6 +1,6 @@
 ---
 title: "Ensemble & Random Forest"
-weight: 9
+weight: 11
 ---
 
 ## I. Maximizing predictive power through collective intelligence — overview of Ensemble & Random Forest

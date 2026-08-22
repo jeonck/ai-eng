@@ -1,6 +1,6 @@
 ---
 title: "Deep Learning"
-weight: 14
+weight: 17
 ---
 
 ## I. High-level abstraction through deep neural networks — overview of Deep Learning

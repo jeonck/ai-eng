@@ -28,10 +28,13 @@ flowchart TD
         A2["Rule-based AI"] --> B2["Naïve Bayes"]
         B2 --> C2["HMM / MCMC"]
         D2["K-NN / SVM"] --- B2
+        R2["Linear / Logistic Regression"] --> D2
+        KM2["K-Means (Unsupervised)"] --- D2
     end
 
     subgraph S2["Machine Learning Evolution"]
         E2["Decision Tree"] --> F2["Ensemble / Random Forest"]
+        F2 --> X2["Gradient Boosting / XGBoost"]
         G2["Genetic Algorithm"] --> H2["Optimization"]
     end
 
@@ -62,8 +65,8 @@ flowchart TD
 
 | Stage | Key models | Core contribution & relationship |
 | :--- | :--- | :--- |
-| **Stage 1**: Rules & statistics | **Rule-based**, **Naïve Bayes**, **HMM** | Solve explicit problems by directly injecting human knowledge or relying on statistical probability |
-| **Stage 2**: Feature-based learning | **Decision Tree**, **SVM**, **K-NN** | Extract **features** from data and classify by finding geometric/logical boundaries |
+| **Stage 1**: Rules & statistics | **Rule-based**, **Linear / Logistic Regression**, **Naïve Bayes**, **HMM** | Solve explicit problems by directly injecting human knowledge or relying on statistical probability |
+| **Stage 2**: Feature-based learning | **Decision Tree**, **SVM**, **K-NN**, **K-Means**, **XGBoost** | Extract **features** from data and classify by finding geometric/logical boundaries |
 | **Stage 3**: Neural networks & optimization | **Neural Network**, **Backpropagation** | Mimic biological neurons and build complex learning systems via error backpropagation through differentiation |
 | **Stage 4**: Deep learning ( **DL** ) | **Deep Learning**, **CNN**, **RNN** | Stack layers deeply to automate high-level abstraction of data (specialized for images, time series) |
 | **Stage 5**: Large models & generation | **NLP**, **LLM**, **Multimodal AI** | Achieve human-level language understanding and multi-sense integration via self-supervised learning and attention |
@@ -74,8 +77,8 @@ The stages above describe *what* was built. Cutting across all of them is *how* 
 
 | Paradigm | What the data looks like | What the model learns | Where it appears |
 | :--- | :--- | :--- | :--- |
-| **Supervised** | Labeled input/output pairs | A mapping from input to a known answer | [Decision Tree](decision-tree), [SVM](svm), [K-NN](knn), [CNN](cnn) |
-| **Unsupervised** | Unlabeled data | Latent structure — clusters, density, compressed representations | Clustering, dimensionality reduction, embedding spaces |
+| **Supervised** | Labeled input/output pairs | A mapping from input to a known answer | [Linear Regression](linear-regression), [Logistic Regression](logistic-regression), [Decision Tree](decision-tree), [SVM](svm), [K-NN](knn) |
+| **Unsupervised** | Unlabeled data | Latent structure — clusters, density, compressed representations | [K-Means clustering](k-means), dimensionality reduction, embedding spaces |
 | **Reinforcement** | A reward signal from an environment | A policy that maximizes cumulative reward | RLHF alignment of an [LLM](llm) |
 | **Self-supervised** | Unlabeled data, with the labels derived from the data itself | General representations, before any task is specified | [LLM](llm) pre-training via next-token prediction |
 
@@ -83,7 +86,7 @@ The data itself also splits along a line that decides which family of model appl
 
 | Data type | Examples | What handles it well |
 | :--- | :--- | :--- |
-| **Structured** (tabular) | Rows and columns — transactions, sensor logs, customer records | Classical ML: [ensembles and random forests](ensemble-random-forest), [decision trees](decision-tree), gradient boosting |
+| **Structured** (tabular) | Rows and columns — transactions, sensor logs, customer records | Classical ML: [gradient boosting](gradient-boosting), [ensembles and random forests](ensemble-random-forest), [decision trees](decision-tree), [linear models](linear-regression) |
 | **Unstructured** | Text, images, audio, video | Deep learning: [CNN](cnn) for vision, [RNN](rnn) and [Transformer](transformer) for sequence, [multimodal models](multimodal-ai) across several at once |
 
 ### D. The machine learning lifecycle

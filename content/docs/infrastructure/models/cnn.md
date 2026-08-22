@@ -1,6 +1,6 @@
 ---
 title: "Convolutional Neural Network"
-weight: 15
+weight: 18
 ---
 
 ## I. Preserving spatial information and extracting features — overview of CNN

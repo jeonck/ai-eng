@@ -1,6 +1,6 @@
 ---
 title: "Recurrent Neural Networks"
-weight: 16
+weight: 19
 ---
 
 ## I. Memory and processing of sequential data — overview of RNN

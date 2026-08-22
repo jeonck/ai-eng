@@ -1,6 +1,6 @@
 ---
 title: "Rule-based AI"
-weight: 2
+weight: 1
 ---
 
 ## I. Logical inference driven by explicit rules — overview of Rule-based AI

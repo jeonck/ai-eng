@@ -1,6 +1,6 @@
 ---
 title: "Markov Chain Monte Carlo"
-weight: 5
+weight: 6
 ---
 
 ## I. Numerical sampling of complex distributions — overview of MCMC

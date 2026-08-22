@@ -1,6 +1,6 @@
 ---
 title: "Support Vector Machines"
-weight: 7
+weight: 9
 ---
 
 ## I. Finding the optimal boundary via margin maximization — overview of SVM

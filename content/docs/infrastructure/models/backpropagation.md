@@ -1,6 +1,6 @@
 ---
 title: "Backpropagation"
-weight: 13
+weight: 16
 ---
 
 ## I. Propagating error backward via the chain rule — overview of Backpropagation

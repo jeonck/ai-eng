@@ -1,6 +1,6 @@
 ---
 title: "Optimization"
-weight: 11
+weight: 14
 ---
 
 ## I. Numerically searching for minimal loss — overview of Optimization

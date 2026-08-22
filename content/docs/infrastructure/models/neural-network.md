@@ -1,6 +1,6 @@
 ---
 title: "Neural Network"
-weight: 12
+weight: 15
 ---
 
 ## I. Combining biological inspiration with mathematics — overview of Neural Network

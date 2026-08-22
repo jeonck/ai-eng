@@ -1,6 +1,6 @@
 ---
 title: "Genetic Algorithm"
-weight: 10
+weight: 13
 ---
 
 ## I. Engineering natural selection and evolution — overview of Genetic Algorithm

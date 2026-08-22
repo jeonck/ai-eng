@@ -1,6 +1,6 @@
 ---
 title: "Natural Language Processing"
-weight: 18
+weight: 21
 ---
 
 ## I. Communication between human language and machines — overview of NLP

@@ -1,6 +1,6 @@
 ---
 title: "Naïve Bayes"
-weight: 3
+weight: 4
 ---
 
 ## I. Fast probabilistic classification based on an independence assumption — overview of Naïve Bayes
