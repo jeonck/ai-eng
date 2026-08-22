@@ -50,7 +50,7 @@ graph LR
 | :--- | :--- | :--- | :--- |
 | **Core Principle** | Parallel model training and averaging | Sequential training with error correction | Retraining on model outputs (meta-model) |
 | **Primary Goal** | Reduce variance ( **Variance** ) | Reduce bias ( **Bias** ) | Maximize predictive performance |
-| **Representative Algorithms** | **Random Forest** | **XGBoost**, **LightGBM** | **Meta Learner** |
+| **Representative Algorithms** | **Random Forest** | [**XGBoost**, **LightGBM**](/docs/infrastructure/models/gradient-boosting/) | **Meta Learner** |
 
 ### B. Technology trends
 
