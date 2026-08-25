@@ -31,13 +31,15 @@ flowchart TD
 |---|---|
 | **Prompt & context design** | Advanced prompting and RAG-based knowledge connection |
 | **RAG 2.0** | Verification-focused RAG — GraphRAG, Agentic RAG, CRAG |
-| **Agent interfaces** | Integrating external tools (APIs), multi-agent collaboration |
+| **Agent interfaces** | Integrating external tools (APIs), harness patterns, multi-agent collaboration |
 | **State management** | Maintaining continuity of reasoning across agents |
 | **Workflow automation** | AI executing complex business logic step by step |
 
 ## Core strategy: the agentic environment
 
 The ability to build an **agentic environment** — controlling systems with natural language, as in "vibe coding" — is where this domain is won or lost.
+
+What decides whether that environment holds up is the **harness** — the control flow wrapped around the model. The [nine harness patterns](agent-interface#harness-patterns) range from a single ReAct loop to graph orchestration and swarms, and the discipline is to start with the simplest one that could work and add a pattern only when a bottleneck forces it. A multi-agent system built before the bottleneck exists is a debugging problem chosen voluntarily.
 
 ## Health check questions
 
@@ -47,6 +49,7 @@ The ability to build an **agentic environment** — controlling systems with nat
 - [ ] Do agents remember the results of prior steps and move logically to the next one?
 - [ ] Does the agent workflow fall back gracefully when an external API fails?
 - [ ] Can complex business logic be executed from natural-language instructions alone?
+- [ ] Is each agent running the simplest harness that meets its requirement, rather than the most capable one available?
 
 {{< cards >}}
   {{< card link="prompt-design" title="Prompt & Context Design" icon="chat" >}}
