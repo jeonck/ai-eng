@@ -28,7 +28,7 @@ flowchart LR
 
 | Component | Description |
 |---|---|
-| **UI/UX design** | Conversational UI (CUI), multimodal optimization |
+| **UI/UX design** | Conversational UI (CUI), agent-run progress and control, multimodal optimization |
 | **Multimodal input** | Handling and visualizing images, voice, diagrams, and other input types |
 | **AI literacy** | Guidance that helps users make effective use of AI |
 | **Feedback loops** | Collecting user feedback and feeding it back into the system |
@@ -41,6 +41,8 @@ Interface is not simply a technical UI problem — it's the domain that manages 
 - Is there over-reliance on, or under-trust of, AI output?
 - Can users control how they collaborate with AI themselves?
 
+Agents raise the stakes on all three. A chat response is wrong in one visible place; an agent running a [multi-step harness](/docs/orchestration/agent-interface/#harness-patterns) is wrong somewhere inside a sequence of actions that already had effects. The interface obligations shift accordingly — show the plan before it runs, report progress while it does, allow interruption at any point, and require approval before anything irreversible.
+
 ## Health check questions
 
 > "Do users understand the limits of AI and use it appropriately?"
@@ -49,6 +51,7 @@ Interface is not simply a technical UI problem — it's the domain that manages 
 - [ ] Is user feedback (thumbs up/down) actually connected to system improvement?
 - [ ] Does multimodal input reflect users' real needs?
 - [ ] Is AI literacy training provided on a regular basis?
+- [ ] When an agent runs for more than a few seconds, can the user see what it is doing and stop it?
 
 {{< cards >}}
   {{< card link="ux-design" title="AI UI/UX Design" icon="sparkles" >}}
