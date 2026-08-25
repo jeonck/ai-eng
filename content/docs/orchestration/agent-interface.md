@@ -77,6 +77,54 @@ flowchart TD
     style D fill:#16A34A,stroke:#15803D,color:#fff
 ```
 
+## Harness Patterns
+
+The architectures above describe how many agents there are. The harness is the control flow wrapped around them — the loop, the branching, the point where work is split or checked. Nine patterns cover most production systems, and they compose rather than compete.
+
+**Single-agent loops** — one model, one thread of control:
+
+| Pattern | The loop it runs | Reach for it when |
+|---|---|---|
+| **ReAct** | Reason → act → observe, repeated until the goal is met — see the [ReAct prompt pattern](/docs/orchestration/prompt-design/) | The default. Start here for anything involving tools |
+| **Reflexion** | The agent critiques its own output, records what went wrong, and carries that note into the next attempt | Failures are recoverable and a second try with hindsight would succeed |
+
+**Decomposition** — the work is split before it is executed:
+
+| Pattern | How work is divided | Reach for it when |
+|---|---|---|
+| **Prompt Chaining** | A fixed sequence of steps, each step's output feeding the next | The steps are known in advance and always run in the same order |
+| **Routing** | A classifier sends each request to the specialist model or path that fits it | Request types differ enough that one prompt serves none of them well |
+| **Parallelization** | *Sectioning* runs independent subtasks at once; *voting* runs the same task several times and takes the consensus | Latency is the constraint (sectioning), or a single sample is not reliable enough (voting) |
+
+**Coordination** — control flow spans multiple agents:
+
+| Pattern | Who decides what happens next | Reach for it when |
+|---|---|---|
+| **Orchestrator–Workers** | A lead agent splits the task at runtime, dispatches specialist workers, and merges results — see [the pattern below](#orchestratorsub-agent-pattern) | The subtasks are not knowable until the request is read |
+| **Evaluator–Optimizer** | One agent drafts, a second scores it against explicit criteria, and the loop repeats until it passes | Quality is judgeable against a rubric and the first draft usually is not good enough |
+| **Graph Orchestration** | A declared graph of nodes and edges, with conditionals and loops made explicit — the model of [LangGraph](#comparing-major-frameworks) | The flow is complex enough that you need to see and debug the path it took |
+| **Swarm** | Nobody — peer agents coordinate through shared state, with no central controller | Exploratory work such as brainstorming. Hardest to bound: without a controller, runaway loops and cost have no natural stop |
+
+### Choosing and Combining Them
+
+```mermaid
+flowchart LR
+    A["Single ReAct agent"] -->|"Requests differ in kind"| B["+ Routing"]
+    A -->|"Too slow, or one sample is unreliable"| C["+ Parallelization"]
+    A -->|"Output quality is inconsistent"| D["+ Evaluator–Optimizer"]
+    B --> E["Orchestrator–Workers<br/>or Graph Orchestration"]
+    C --> E
+    D --> E
+
+    style A fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style B fill:#EFF6FF,stroke:#2563EB,color:#1E40AF
+    style C fill:#EFF6FF,stroke:#2563EB,color:#1E40AF
+    style D fill:#EFF6FF,stroke:#2563EB,color:#1E40AF
+    style E fill:#7C3AED,stroke:#6D28D9,color:#fff
+```
+
+Two rules carry most of the value here. **Start with the simplest harness that could work** — usually a single ReAct agent — and add a pattern only when a specific bottleneck forces it; a multi-agent system built before the bottleneck exists is a debugging problem you chose voluntarily. And **expect to combine them**: a production system routes incoming requests, parallelizes the retrieval behind them, and runs an evaluator over the draft, which is three patterns in one request path.
+
 ## Tool Calling Design Principles
 
 ### Good Tool Design
