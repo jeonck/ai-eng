@@ -59,7 +59,7 @@ Two things make ARC-AGI worth watching beyond the headline score:
 - **Cost per task is reported alongside accuracy.** A system that brute-forces a puzzle with thousands of sampled programs is not doing the same thing as one that solves it in a single pass, and the leaderboard makes that visible instead of hiding it. This is the clearest mainstream example of **efficiency-normalized evaluation**.
 - **A human baseline is measured, not assumed.** Tasks are validated on real people, so "AI vs. human" comparisons on ARC are grounded rather than rhetorical.
 
-ARC-AGI-3 is the more informative track today. It is the shift the whole field is making in miniature: from *answer this question* to *operate in this environment and figure out what the goal even is*.
+ARC-AGI-2 has since followed its predecessor up the curve — the snapshot below puts the top of that leaderboard above the benchmark's own grand-prize threshold, roughly eighteen months after release. ARC-AGI-3 is the more informative track today. It is the shift the whole field is making in miniature: from *answer this question* to *operate in this environment and figure out what the goal even is*.
 
 ---
 
@@ -78,6 +78,31 @@ When a model is announced, the scores quoted are chosen by the vendor. This is t
 | **Long context** | **AA-LCR**, needle-and-reasoning variants | Retrieval over long inputs is largely solved; *reasoning* across the whole input is not |
 | **Hallucination** | **AA-Omniscience**, **SimpleQA** | Score both what the model gets right and what it asserts wrongly — see [Guardrails & Security](/docs/governance/guardrails/) |
 | **Economic value** | **GDPval** | 1,300+ tasks drawn from the real deliverables of 44 occupations across nine industries, graded by professionals against expert-produced work |
+
+---
+
+## Snapshot — where the numbers stood in September 2026
+
+Scores below were compiled on **2026-09-06** from the public leaderboards linked in each row. They are included to show the *shape* of the field, not as a citable ranking: frontier numbers move weekly, aggregators disagree, and the entry at the top of any row will likely be stale by the time you read it. Follow the link before quoting a figure.
+
+| Benchmark | Leading result | Runners-up | As of / source |
+| :--- | :--- | :--- | :--- |
+| **ARC-AGI-2** | GPT-6 Astra — **95.0%** | GPT-5.6 Sol 92.5%, Claude Opus 5 90.4% | Sep 3, 2026 — [BenchLM](https://benchlm.ai/benchmarks/arc-agi-2), [llm-stats](https://llm-stats.com/benchmarks/arc-agi-v2) |
+| **ARC-AGI-3** | GPT-6 Astra — **62.7%** | Claude Opus 5 30.2%, GPT-5.6 Sol 7.8% | Sep 4, 2026 — [BenchLM](https://benchlm.ai/benchmarks/arcagi3), [ARC Prize](https://arcprize.org/leaderboard) |
+| **Humanity's Last Exam** | Claude Fable 5.1 — **65%** (tool-assisted boards) down to **46.5%** (no tools, text only) | Claude Opus 5 64.7%, Claude Mythos 5 64.5% | Sep 4–5, 2026 — [BenchLM](https://benchlm.ai/benchmarks/hle), [Artificial Analysis](https://artificialanalysis.ai/evaluations/humanitys-last-exam), [llmrun](https://llmrun.dev/benchmark/hle) |
+| **FrontierMath v2 (Tier 4)** | GPT-6 Astra — **97.6%** | GPT-5.6 Sol 83.0%, GPT-5.6 Terra 68.3% | Sep 4, 2026 — [BenchLM](https://benchlm.ai/benchmarks/frontiermathv2tier4), [Epoch AI](https://epoch.ai/benchmarks/frontiermath-tier-4-v2) |
+| **SWE-bench Verified** | Claude Opus 5 — **96%** | Claude Mythos 5 95.5%, Claude Fable 5 95% | Sep 2–4, 2026 — [BenchLM](https://benchlm.ai/benchmarks/swe-bench-verified), [llm-stats](https://llm-stats.com/benchmarks/swe-bench-verified) |
+| **SWE-bench Pro** | Claude Fable 5.1 — **81.2%** | — | 2026 — [CodingFleet](https://codingfleet.com/blog/swe-bench-pro-leaderboard-2026/) |
+| **Terminal-Bench 2.0** | GPT-5.6 Sol — **91.9%** | Claude Mythos 5 88.0%, GPT-5.6 Terra 87.4% | Sep 2026 — [BenchLM](https://benchlm.ai/benchmarks/terminal-bench-2), [tbench.ai](https://www.tbench.ai/leaderboard/terminal-bench/2.0) |
+| **OSWorld-Verified** | Qwen3.8 Max — **86.1%** | Claude Fable 5 85%, Claude Mythos 5 85% | Sep 4, 2026 — [BenchLM](https://benchlm.ai/benchmarks/osworld-verified), [Steel.dev](https://leaderboard.steel.dev/leaderboards/osworld/) |
+| **GDPval** | GPT-5.2 — **70.9%** win+tie vs. expert deliverables (49.7% outright wins) | GDPval-AA Elo: Claude Opus 5 1862, Claude Fable 5.1 1853 | 2026 — [Epoch AI](https://epoch.ai/benchmarks/gdpval), [Artificial Analysis](https://artificialanalysis.ai/evaluations/gdpval-aa) |
+
+Four things this table shows better than any argument:
+
+- **The treadmill is fast.** ARC-AGI-2 was built in 2025 to be near-zero for models and is now above its own 85% grand-prize threshold, against an average individual human score of 66%. FrontierMath Tier 4 — the hardest tier of a benchmark designed to last — reads the same way at the top.
+- **Protocol matters more than model at the top.** Humanity's Last Exam spans roughly 46% to 65% *for the same model family*, depending on whether search, browsing, and code execution are allowed. A number without its protocol is not a result.
+- **Aggregators disagree.** SWE-bench Verified appears as 96% or 97% depending on whose harness ran it, and the top several models sit within about one point — inside the noise of the harness itself.
+- **The unsaturated benchmarks are the interactive ones.** ARC-AGI-3, computer use, and long-horizon terminal work still have real headroom, and the gap between first and second place there is enormous compared to the coding leaderboards.
 
 ---
 
