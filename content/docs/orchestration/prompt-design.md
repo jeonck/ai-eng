@@ -97,6 +97,8 @@ Tools differ mainly in whether they are built around *running experiments* or ar
 | **Braintrust** | Hosted, experiment-first | Comparing many prompt versions against a scored dataset over time |
 | **Arize Phoenix** | Open-source, OpenTelemetry-based | Unifying LLM traces with the rest of your [observability](/docs/governance/monitoring/) stack |
 
+Public benchmarks answer a different question than these tools do — they narrow the model shortlist, they do not decide a release. See [Frontier Benchmarks & Evaluation Trends](/docs/infrastructure/ai-evaluation/) for what ARC-AGI, HLE, SWE-bench and the agentic suites actually measure.
+
 Two cautions. Pick the tool after you have a test set, not before — a platform with nothing to score is overhead. And LLM-judge scores are model outputs like any other: they drift when the judge model changes, so pin the judge version and re-check a sample by hand.
 
 ## Prompt Version Control

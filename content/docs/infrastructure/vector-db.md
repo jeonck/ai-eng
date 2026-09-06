@@ -1,6 +1,6 @@
 ---
 title: "Vector DB Optimization"
-weight: 6
+weight: 7
 ---
 
 Choosing and tuning vector databases for semantic search

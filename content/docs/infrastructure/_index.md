@@ -32,6 +32,7 @@ flowchart LR
 | **Compute resources** | GPU/NPU servers, cloud infrastructure optimization |
 | **Model selection & tuning** | Choosing the right LLM for the job, fine-tuning, quantization |
 | **AI model benchmarking** | Quantitative analysis of intelligence, speed, and price based on Artificial Analysis |
+| **Frontier benchmarks & evaluation** | What ARC-AGI, HLE, SWE-bench and agentic suites measure, and how to read a leaderboard |
 | **Data pipelines** | Real-time data collection and cleaning for AI training and inference |
 | **Vector DB** | Optimizing vector databases for semantic search |
 | **MCP servers** | Context management based on the Model Context Protocol |
@@ -51,12 +52,14 @@ The goal is not simply to "own" models — it's to run a **model mix strategy** 
 - [ ] Is GPU/cloud spend optimized within budget?
 - [ ] Does vector DB response time meet SLA in production?
 - [ ] Have we chosen the right strategy among fine-tuning, prompt engineering, and RAG?
+- [ ] Do we evaluate model changes against our own eval set rather than against public leaderboards?
 - [ ] Are MCP servers providing context reliably?
 
 {{< cards >}}
   {{< card link="computing" title="Compute Resource Management" icon="server" >}}
   {{< card link="model-selection" title="Model Selection & Tuning" icon="adjustments" >}}
   {{< card link="ai-model-benchmark" title="AI Model Benchmarking" icon="chart-bar" >}}
+  {{< card link="ai-evaluation" title="Frontier Benchmarks & Evaluation Trends" icon="beaker" >}}
   {{< card link="data-pipeline" title="Data Pipelines" icon="database" >}}
   {{< card link="vector-db" title="Vector DB Optimization" icon="cube" >}}
   {{< card link="mcp-server" title="MCP Server Management" icon="puzzle" >}}

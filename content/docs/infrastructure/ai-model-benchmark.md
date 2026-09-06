@@ -117,5 +117,6 @@ flowchart TD
 
 ## Related Categories
 
+- [🔬 Frontier Benchmarks & Evaluation Trends](/docs/infrastructure/ai-evaluation/) — what the individual benchmarks behind these indices measure
 - [🛡 AI Governance Overview](/docs/governance/) — hallucination monitoring, regulatory compliance
 - [📊 AI Business Impact](/docs/business/) — ROI analysis based on model cost

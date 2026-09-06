@@ -1,6 +1,6 @@
 ---
 title: "Data Pipelines"
-weight: 5
+weight: 6
 ---
 
 A system for real-time data collection and cleaning for AI training and inference

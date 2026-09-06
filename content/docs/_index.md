@@ -54,7 +54,7 @@ flowchart LR
 | **3. Model APIs** | Talking to a model from code rather than a chat window; structured outputs; function calling | [Agent Interface](orchestration/agent-interface), [Model Selection & Tuning](infrastructure/model-selection) |
 | **4. RAG** | Chunking and embedding your own documents so the model can answer from information it was never trained on | [RAG Pipeline](orchestration/rag), [RAG 2.0](orchestration/rag-2-0), [Vector DB Optimization](infrastructure/vector-db) |
 | **5. Agents** | Goals, multi-step planning, calling tools and external APIs, carrying state across steps | [Agent Interface](orchestration/agent-interface), [State Management](orchestration/state-management), [Workflow Automation](orchestration/workflow-automation) |
-| **6. Production skills** | Version control, cloud deployment, vector databases, evaluation and testing, security and privacy | [AI-Native Design Framework](governance/ai-native), [Compute Resource Management](infrastructure/computing), [AI Model Benchmarking](infrastructure/ai-model-benchmark), [Guardrails & Security](governance/guardrails) |
+| **6. Production skills** | Version control, cloud deployment, vector databases, evaluation and testing, security and privacy | [AI-Native Design Framework](governance/ai-native), [Compute Resource Management](infrastructure/computing), [AI Model Benchmarking](infrastructure/ai-model-benchmark), [Frontier Benchmarks & Evaluation](infrastructure/ai-evaluation), [Guardrails & Security](governance/guardrails) |
 
 Stages 1–3 are foundations; the rest of this site starts where they leave off. For the developer track and practice projects that exercise these stages end to end, see [AI Literacy Education](interface/ai-literacy).
 

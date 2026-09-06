@@ -1,6 +1,6 @@
 ---
 title: "MCP Server Management"
-weight: 7
+weight: 8
 ---
 
 Model Context Protocol — a standard protocol for connecting AI models to external context and tools
