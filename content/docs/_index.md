@@ -71,4 +71,4 @@ This framework covers the engineering practice, not the fundamentals underneath 
 | 3, 4 | [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps) — reference implementations to read |
 | 5 | [Microsoft — AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners) |
 | 2, 6 | [Maxime Labonne — LLM Course](https://github.com/mlabonne/llm-course) — model internals, fine-tuning, quantization |
-| 2 | [Stanford CS229 — Machine Learning](https://cs229.stanford.edu/) — the lectures behind the fundamentals, including tokenization, attention, and decoding |
+| 2 | [Stanford CS229 — Transformers, In-Context Learning](https://www.youtube.com/watch?v=pwQ0l4hFCVI) — the lecture behind the tokenization, attention, and decoding sections here |
