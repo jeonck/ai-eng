@@ -30,6 +30,7 @@ flowchart TD
 | Component | Description |
 |---|---|
 | **Prompt & context design** | Advanced prompting and RAG-based knowledge connection |
+| **RAG or CAG** | Retrieving knowledge at question time vs. preloading it as cached context |
 | **RAG 2.0** | Verification-focused RAG — GraphRAG, Agentic RAG, CRAG |
 | **Agent interfaces** | Integrating external tools (APIs), harness patterns, multi-agent collaboration |
 | **State management** | Maintaining continuity of reasoning across agents |
@@ -45,6 +46,7 @@ What decides whether that environment holds up is the **harness** — the contro
 
 > "Is our orchestration layer mature enough for agents to collaborate with each other?"
 
+- [ ] Have we confirmed the workload actually needs retrieval, rather than a preloaded context?
 - [ ] Does the RAG pipeline's retrieval accuracy (Recall@K) meet its target?
 - [ ] Do agents remember the results of prior steps and move logically to the next one?
 - [ ] Does the agent workflow fall back gracefully when an external API fails?
