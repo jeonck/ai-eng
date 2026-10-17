@@ -52,6 +52,7 @@ What decides whether that environment holds up is the **harness** — the contro
 - [ ] Does the agent workflow fall back gracefully when an external API fails?
 - [ ] Can complex business logic be executed from natural-language instructions alone?
 - [ ] Is each agent running the simplest harness that meets its requirement, rather than the most capable one available?
+- [ ] When several agents run at once, does something decide which thread needs a human — or do we read everything?
 
 {{< cards >}}
   {{< card link="prompt-design" title="Prompt & Context Design" icon="chat" >}}

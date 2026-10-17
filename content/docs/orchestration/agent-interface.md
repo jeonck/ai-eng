@@ -125,6 +125,79 @@ flowchart LR
 
 Two rules carry most of the value here. **Start with the simplest harness that could work** — usually a single ReAct agent — and add a pattern only when a specific bottleneck forces it; a multi-agent system built before the bottleneck exists is a debugging problem you chose voluntarily. And **expect to combine them**: a production system routes incoming requests, parallelizes the retrieval behind them, and runs an evaluator over the draft, which is three patterns in one request path.
 
+## Planning: Up Front or Inside the Loop?
+
+Until recently, switching a coding agent into **plan mode** before handing over work was simply the done thing: the agent reads the codebase, writes a plan, a human approves it, and only then does anything get written to disk. That step is now contested, and the argument is worth understanding because it generalizes to every agent harness, not just coding tools.
+
+Plan mode was doing two separate jobs, and they are moving in opposite directions.
+
+| Job | Direction of travel |
+| :--- | :--- |
+| **Instructing the agent precisely** so it does not wander | **Shrinking** — models explore a codebase and make reasonable assumptions on their own, and every decision the model gets right is one fewer decision to pre-specify |
+| **Giving a human understanding and a veto** before changes land | **Growing** — with many agents working at once, knowing where to look is the scarce resource |
+
+### Why the up-front plan is losing ground
+
+- **The model now decides much of what the plan used to decide.** Context, memory files, and codebase exploration cover a large share of what a human used to have to specify. The clearest product-level signal is the default itself: Claude Code moved interactive sessions to **auto mode** as the default during 2026, with the old default renamed Manual ([changelog](https://code.claude.com/docs/en/changelog)).
+- **Long AI-written plans do not get read.** Planning has value; shipping its output as a long document is a different proposition. A plan that records every decision *and* its context gets long, the over-structured register of generated prose makes it tiring to finish, and adding a summary to fix that just adds more text. Teams building plan-centric coding tools report users caring less about spec documents than expected — and a document you must re-summarize to use is an argument that it should have been short from the start.
+- **The plan → approve → execute split cuts against how the work actually goes.** Real work is: understand part of it, build something, look at the result, change your mind. A gate in the middle forces you to finish thinking before you have the information that would change your thinking, and going back to the plan during implementation feels like losing ground. There is also a switching tax: deciding per task whether this one needs plan mode, and toggling.
+- **Heavier spec-driven flows carry a real cost.** One practitioner comparison reports spec-kit-style projects costing several times the equivalent plan-mode flow for the same scope ([Instil](https://instil.co/blog/spec-driven-development-is-dead-long-live-plan-mode)); the counter-argument is that specs are the counterweight to unconstrained vibe coding ([DEV](https://dev.to/krlz/spec-driven-development-in-2026-what-it-is-the-tooling-and-how-teams-actually-use-it-2fk2)). Both are opinion pieces — there is no controlled comparison to point at yet.
+
+### What replaces it
+
+Planning does not disappear; it moves inside the execution loop, as one more step the agent takes when it needs it rather than a phase the human schedules.
+
+```mermaid
+flowchart LR
+    A["Understand<br/>part of the task"] --> B["Act"]
+    B --> C["Verify<br/>(tests, run it)"]
+    C --> D{"Decision needed<br/>from a human?"}
+    D -->|"No"| A
+    D -->|"Yes"| E["Surface it<br/>with just enough context"]
+    E --> F["Adjust"]
+    F --> A
+
+    style A fill:#EFF6FF,stroke:#2563EB,color:#1E40AF
+    style B fill:#2563EB,stroke:#1D4ED8,color:#fff
+    style C fill:#0891B2,stroke:#0E7490,color:#fff
+    style E fill:#EA580C,stroke:#C2410C,color:#fff
+    style F fill:#7C3AED,stroke:#6D28D9,color:#fff
+```
+
+This only works because the cost of going the wrong way has dropped. When a mis-aimed agent burned an afternoon, planning and approving first was correct. When the agent writes a test, runs it, sees the failure, and corrects itself in a minute, a plain chat thread that plans when it needs to is cheaper than a gate on every task.
+
+The second job of plan mode, though, has become the harder problem. With agents running in parallel, no one can follow every thread and every diff, and human review is now the measured constraint rather than agent throughput: secondhand coverage of a 2026 study reports roughly 30% more code produced with review-and-merge time rising alongside it ([ExplainX summary](https://explainx.ai/blog/ai-coding-agents-more-code-not-more-software-harvard-jellyfish-review-bottleneck-2026)), and experienced practitioners describe still being able to land only one significant change at a time ([Simon Willison](https://simonw.substack.com/p/embracing-the-parallel-coding-agent)). Treat the numbers as indicative, not settled.
+
+So the design goal shifts from *document the plan* to **route attention**: rank the running work by what it needs from a human — approval, an answer, a decision — put those first, and attach exactly the context needed to decide. That is the same instinct as the [human-in-the-loop pattern](/docs/orchestration/workflow-automation/), applied to a fleet of agents instead of one pipeline.
+
+### A note on what actually changed
+
+Plan mode has not been removed from the major tools, and reports of its death are ahead of the evidence. Claude Code still ships it — October 2026 releases fixed plan-mode behavior on resume and added a setting for how auto mode interacts with planning — and the Codex CLI still offers a read-only planning mode. What changed is the **default and the weight**: planning went from a gate you open before work starts to a step the agent takes inside the loop when the task warrants it.
+
+### When to still plan up front
+
+| Plan first | Just start |
+| :--- | :--- |
+| Irreversible or hard-to-reverse work — data migrations, deletions, anything touching production state | Local, reversible changes in code with tests |
+| Changes spanning several services or teams, where the interface has to be agreed before code exists | Work contained in one module the agent can read in full |
+| Unfamiliar codebase with no tests, where the agent cannot check its own work | Codebase where the agent can verify itself and show you the result |
+| Work that will be handed to someone else to finish, so the reasoning has to outlive the session | Work you will review yourself, now, in the diff |
+| Cost or latency makes a wrong path expensive (long builds, paid external calls) | Fast iteration loop where trying is cheaper than deciding |
+
+The practical default: let the agent plan when it judges it needs to, require a plan for the left-hand column, and spend the saved review budget on the changes that deserve it.
+
+### Building for tool churn
+
+The shape of these tools has changed three times in short order — plain chat, then plan mode as a required step, now fleets of parallel agents — and will change again. What survives those shifts is not a workflow you adopted but the substrate underneath it:
+
+| Durable investment | Why it outlasts the tooling |
+| :--- | :--- |
+| **Tests and CI that an agent can run** | The verification step in the loop above; without it, the agent cannot self-correct and a human has to read everything |
+| **Eval sets for your own tasks** | Lets you adopt a new model or mode on evidence rather than vibes — see [Frontier Benchmarks & Evaluation](/docs/infrastructure/ai-evaluation/) |
+| **Context and memory files in the repo** | What lets a model make the decisions a plan document used to make |
+| **Review routing** | Decides what reaches a human, which is the bottleneck regardless of which tool is in fashion |
+| **An internal team that owns the loop** | Model and tool choices change quarterly; the people who understand your system's constraints are what makes the next change cheap |
+
 ## Tool Calling Design Principles
 
 ### Good Tool Design

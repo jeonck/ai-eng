@@ -29,6 +29,8 @@ AI Drafts → [Automated Quality Check] → Human Review → AI Final Revision �
                               Human intervenes at this point
 ```
 
+When many agents run at once, the question stops being *where to put the gate* and becomes *which of the running threads deserves a human's attention right now* — see [Planning: Up Front or Inside the Loop?](/docs/orchestration/agent-interface/) for that shift.
+
 **Cases requiring human intervention**:
 - Decisions with significant legal or financial impact
 - Situations with high uncertainty (AI confidence below a threshold)
