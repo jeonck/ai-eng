@@ -38,7 +38,7 @@ flowchart TD
 | **Auditability** | Traceable logging and after-the-fact verification of AI output |
 | **FinOps** | Managing AI cost sustainability at the governance level |
 | **Ethics & compliance** | AI ethics guidelines, responding to regulation such as the EU AI Act |
-| **AI-Native design** | Controlling the quality of AI-generated code via ADRs, tech-debt tracking, and PR checklists |
+| **AI-Native design** | Controlling the quality of AI-generated code via ADRs, tech-debt tracking, PR checklists, and [tests independent of the code they verify](ai-native/testing-ai-code) |
 
 ## Beyond security: FinOps
 
@@ -53,6 +53,7 @@ Governance is not only about security. **Cost efficiency**(FinOps) has to be man
 - [ ] Is monthly AI spend tracked and optimized against budget?
 - [ ] Do we regularly review compliance with regulation such as the EU AI Act?
 - [ ] Is AI-generated code written to meet ADR standards?
+- [ ] Do the tests for AI-generated code take their expected values from a spec or contract, rather than from the implementation they are testing?
 
 {{< cards >}}
   {{< card link="guardrails" title="Guardrails & Security" icon="shield-exclamation" >}}
