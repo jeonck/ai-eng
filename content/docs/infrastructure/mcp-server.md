@@ -27,6 +27,8 @@ flowchart LR
     style F fill:#1E3A5F,stroke:#1E3A5F,color:#fff
 ```
 
+MCP standardizes the connection between an agent and the **tools and data** it uses. A separate problem — how independent agents, owned by different teams or vendors, discover and delegate to **each other** — is addressed by agent-to-agent protocols such as A2A. The two are complementary rather than competing: an agent can speak A2A outward to peers while speaking MCP downward to its own tools.
+
 ## Core Components of MCP
 
 | Component | Role | Status in `2026-07-28` |

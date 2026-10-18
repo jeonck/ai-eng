@@ -241,6 +241,25 @@ Orchestrator Agent
 | **Claude Code SDK** | Official Anthropic offering, coding-focused | Development automation |
 | **OpenAI Agents SDK** | Lightweight primitives — agents, handoffs, guardrails, sessions | Staying close to the OpenAI stack |
 
+## Reference Stack
+
+A working agent is rarely one library. It is a stack of layers, and most of the build effort goes into the layers that are not the model. Naming them makes the gaps visible — the layer you have no answer for is the one that will stall the project:
+
+| Layer | What it does | Representative options |
+|---|---|---|
+| **Orchestration** | Runs the harness — the loop, branching, handoffs | LangGraph, CrewAI, AutoGen, OpenAI Agents SDK |
+| **Tool connectivity** | Exposes external systems to the model as callable tools | [MCP](/docs/infrastructure/mcp-server/) servers, direct function calling |
+| **Web access** | Search and page retrieval for information outside the model | Tavily, Serper, provider-native search |
+| **Code execution** | Runs model-written code in a sandbox, never on the host | Containerized runners, hosted sandboxes |
+| **Browser automation** | Drives real web UIs when no API exists | Playwright and the agent wrappers over it |
+| **Retrieval** | Grounds answers in private data — see [RAG](/docs/orchestration/rag/) | [Vector DBs](/docs/infrastructure/vector-db/); graph stores for [GraphRAG](/docs/orchestration/rag-2-0/) |
+| **Memory & state** | Carries context across steps and sessions — see [State Management](/docs/orchestration/state-management/) | Redis, Postgres with pgvector |
+| **Durable execution** | Survives restarts for runs measured in hours, not seconds | Workflow engines with persistent state |
+| **Output validation** | Enforces the schema and the policy on what comes back | Schema validation, [guardrail frameworks](/docs/governance/guardrails/) |
+| **Observability** | Traces, costs, and evaluation over live runs | [OpenTelemetry-based tracing](/docs/governance/monitoring/), LLM-specific platforms |
+
+Three notes on using this. **Tool names move faster than layers do** — the layer a project needs is stable, the library filling it is not, so treat the right-hand column as examples rather than recommendations. **You do not need every layer** — a document Q&A agent needs retrieval, validation, and observability, and nothing else on this list. And **code execution and browser automation are the two layers where an agent stops being read-only**, which makes the sandbox boundary and the approval step part of the design rather than a hardening task for later.
+
 ## Error Handling Strategy
 
 ```python
