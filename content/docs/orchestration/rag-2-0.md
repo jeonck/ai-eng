@@ -20,6 +20,8 @@ Classic RAG is a three-stage pipeline: document indexing → vector similarity s
 | **Connecting relationships** | Struggles with complex questions that require linking multiple documents |
 | **No self-verification** | Cannot judge on its own whether the retrieved documents are actually relevant |
 
+Before reaching for any of the three approaches below, rule out the cheaper explanation. A pipeline that retrieves the wrong passages often has a chunking problem rather than an architecture problem — chunks cut mid-topic, or too small to carry the context that made them meaningful. Revisiting [chunking strategies](/docs/orchestration/rag/#chunking-strategies) costs a re-index; adopting GraphRAG costs a graph to build and maintain. Only the limitations that survive a better chunker are the ones RAG 2.0 is for.
+
 ---
 
 ## The Three Approaches of RAG 2.0
@@ -169,5 +171,6 @@ Because it only requires **adding an evaluator layer** to an existing RAG pipeli
 
 ## Related Categories
 
+- [⚙️ RAG Pipeline](/docs/orchestration/rag/) — the RAG 1.0 foundation these build on: chunking, hybrid search, reranking
 - [🏗 Infrastructure & Architecture](/docs/infrastructure/) — choosing vector DBs and LLM API providers
 - [🛡 AI Governance](/docs/governance/) — hallucination monitoring, answer trustworthiness management
