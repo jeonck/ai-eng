@@ -109,6 +109,38 @@ This leads to an architectural decision worth making explicitly rather than by h
 
 Two cautions before defaulting to CAG. Long contexts degrade: [reasoning across a whole long input](/docs/infrastructure/ai-evaluation/) is measurably harder than retrieving one fact from it, so a 200k-token prefix is not free accuracy. And cached reads are cheaper, not free — at high request volume a large prefix on every call can cost more than running a retriever.
 
+## Chunking Strategies
+
+Once RAG is the answer, chunking is the first decision and the one with the longest shadow. A retriever can only return chunks that exist, so a fact split across two chunks — or buried in a chunk about something else — is unreachable no matter how good the embedding model, the reranker, or the prompt downstream. Chunking sets the ceiling; everything after it works below that ceiling.
+
+| Strategy | How it splits | Cost | Reach for it when |
+|---|---|---|---|
+| **Fixed-Size** | Every N tokens, with a small overlap between neighbors | Lowest | A baseline, or text with no structure to exploit at all |
+| **Recursive** | Paragraphs first, falling back to lines, then words, then characters, only when a piece is still too large | Low | The sensible default — structure-aware where structure exists, never over-long |
+| **Document-Based** | On the breaks the document already declares — headings, chapters, HTML tags, function boundaries | Low | Markdown, HTML, or source code, where the author's structure is the real topic boundary |
+| **Semantic** | Embeds each sentence and starts a new chunk when similarity to the previous one drops | Medium | Unstructured prose where topics shift without any formatting to mark it |
+| **LLM-Based** | An LLM rewrites the text as standalone propositions, one idea per chunk | High | Small, high-value corpora where retrieval precision justifies per-document inference |
+| **Agentic** | An agent inspects each document, identifies what it is — contract, code, table — and picks the method for that file | High | Heterogeneous collections where one rule would be wrong for most of them |
+| **Late Chunking** | Embeds the whole document first, then applies the split boundaries and mean-pools within each | Medium | Chunks that lose their meaning in isolation — pronouns, references, "this clause" |
+| **Hierarchical** | Layers the document: sections, then paragraphs, then sentences | Medium | You want to retrieve on the small unit but hand the model the larger one it came from |
+
+### How to choose
+
+**Start with recursive.** It is the default for a reason: it respects structure when the document has it and degrades gracefully when it does not, at effectively no cost. Replace it only when a specific failure appears in your [evaluation metrics](#rag-evaluation-metrics) below.
+
+The later strategies each answer a different failure, which is how to pick between them:
+
+| Symptom | What it points to |
+|---|---|
+| Retrieved chunks cut mid-topic, or mix two subjects | **Document-based** if the structure exists, **semantic** if it does not |
+| Chunks are individually correct but meaningless out of context | **Late chunking**, or **hierarchical** to return the parent |
+| Precision is fine, but answers miss context the chunk implied | **Hierarchical** — retrieve small, generate from large |
+| Quality varies wildly by document type | **Agentic** — one rule is being applied to documents that need several |
+
+Two parameters matter as much as the strategy. **Overlap** exists to stop a fact from being severed at a boundary, and a modest overlap is cheap insurance; large overlap inflates the index and returns near-duplicate results. **Chunk size** trades precision against context — small chunks retrieve accurately and arrive without their surroundings, large chunks carry context and dilute the embedding, which is exactly the tension hierarchical and late chunking exist to resolve.
+
+Finally: chunking is not a one-time decision made at ingestion and forgotten. It is a parameter to evaluate like any other, and re-chunking a corpus is usually a cheaper experiment than adding another component to the pipeline.
+
 ## Advanced RAG Patterns
 
 ### Naive RAG vs Advanced RAG
@@ -118,7 +150,7 @@ Two cautions before defaulting to CAG. Long contexts degrade: [reasoning across 
 | **Retrieval method** | Simple vector similarity | Hybrid (vector + keyword) |
 | **Reranking** | None | Cross-encoder reranking |
 | **Query expansion** | Original query only | HyDE, query decomposition |
-| **Chunking** | Fixed size | Semantic chunking |
+| **[Chunking](#chunking-strategies)** | Fixed size | Semantic chunking |
 
 ### Hybrid Search
 
