@@ -25,6 +25,7 @@ project/
 | [ADR Template](adr-template) | Records architecture decisions — why a given technology was chosen |
 | [Tech-Debt Register](debt-register) | Tracks AI-generated code that needs improvement |
 | [PR Checklist](pr-checklist) | PR review guide that includes AI-development checks |
+| [Testing AI-Written Code](testing-ai-code) | Keeps tests meaningful when the agent writes the code and the tests |
 
 ---
 
@@ -93,4 +94,5 @@ Once the tech-debt register accumulates three or more "high"-impact items, debt 
   {{< card link="adr-template" title="ADR Template" icon="document-text" >}}
   {{< card link="debt-register" title="Tech-Debt Register" icon="clipboard-check" >}}
   {{< card link="pr-checklist" title="PR Checklist" icon="clipboard-check" >}}
+  {{< card link="testing-ai-code" title="Testing AI-Written Code" icon="beaker" >}}
 {{< /cards >}}

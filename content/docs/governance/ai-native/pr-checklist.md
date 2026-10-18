@@ -28,6 +28,7 @@ Save the template below as `.github/PULL_REQUEST_TEMPLATE.md`, and GitHub will l
 - [ ] If a new decision was made, was an ADR written or updated?
 - [ ] Was any newly introduced tech debt logged in `debt-register.md`?
 - [ ] Are unit tests included, and do they pass?
+- [ ] Do the test expectations come from the spec or acceptance criteria, not from the implementation's own output?
 
 ## 📸 Screenshots (if applicable)
 (Attach if there are UI changes)
