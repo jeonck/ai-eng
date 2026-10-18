@@ -42,6 +42,8 @@ The ability to build an **agentic environment** — controlling systems with nat
 
 What decides whether that environment holds up is the **harness** — the control flow wrapped around the model. The [nine harness patterns](agent-interface#harness-patterns) range from a single ReAct loop to graph orchestration and swarms, and the discipline is to start with the simplest one that could work and add a pattern only when a bottleneck forces it. A multi-agent system built before the bottleneck exists is a debugging problem chosen voluntarily.
 
+The harness choice does not stay inside this domain. A multi-step harness that calls tools with side effects is what creates the interface's obligations — a plan to show, steps to report, a point at which to stop, an action to approve — so the harness has to emit those events for the UI to have anything to display. The [agent-run UX patterns](/docs/interface/ux-design/#designing-for-agent-runs) are the other half of this decision.
+
 ## Health check questions
 
 > "Is our orchestration layer mature enough for agents to collaborate with each other?"
