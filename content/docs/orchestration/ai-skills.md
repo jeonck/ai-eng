@@ -1,6 +1,6 @@
 ---
 title: "AI Skill Design"
-weight: 8
+weight: 9
 ---
 
 **Skill-Based Orchestration** — a technique for encapsulating repetitive AI workflows into reusable packages

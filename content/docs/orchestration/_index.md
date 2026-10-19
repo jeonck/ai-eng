@@ -34,6 +34,7 @@ flowchart TD
 | **RAG 2.0** | Verification-focused RAG — GraphRAG, Agentic RAG, CRAG |
 | **Agent interfaces** | Integrating external tools (APIs), harness patterns, multi-agent collaboration |
 | **State management** | Maintaining continuity of reasoning across agents |
+| **Agent memory** | What persists across sessions — conversation, episodic, semantic, procedural |
 | **Workflow automation** | AI executing complex business logic step by step |
 
 ## Core strategy: the agentic environment
@@ -51,6 +52,7 @@ The harness choice does not stay inside this domain. A multi-step harness that c
 - [ ] Have we confirmed the workload actually needs retrieval, rather than a preloaded context?
 - [ ] Does the RAG pipeline's retrieval accuracy (Recall@K) meet its target?
 - [ ] Do agents remember the results of prior steps and move logically to the next one?
+- [ ] Does anything decide what an agent [forgets](memory#the-lifecycle), or does its memory only ever grow?
 - [ ] Does the agent workflow fall back gracefully when an external API fails?
 - [ ] Can complex business logic be executed from natural-language instructions alone?
 - [ ] Is each agent running the simplest harness that meets its requirement, rather than the most capable one available?
@@ -62,6 +64,7 @@ The harness choice does not stay inside this domain. A multi-step harness that c
   {{< card link="rag-2-0" title="RAG 2.0" icon="refresh" >}}
   {{< card link="agent-interface" title="Agent Interface" icon="puzzle" >}}
   {{< card link="state-management" title="State Management" icon="collection" >}}
+  {{< card link="memory" title="Agent Memory" icon="database" >}}
   {{< card link="workflow-automation" title="Workflow Automation" icon="cog" >}}
   {{< card link="ai-skills" title="AI Skill Design" icon="lightning-bolt" >}}
 {{< /cards >}}

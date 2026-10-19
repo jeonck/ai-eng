@@ -1,6 +1,6 @@
 ---
 title: "Workflow Automation"
-weight: 7
+weight: 8
 ---
 
 A workflow engine where AI carries out complex business logic step by step

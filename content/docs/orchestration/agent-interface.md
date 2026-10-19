@@ -253,7 +253,7 @@ A working agent is rarely one library. It is a stack of layers, and most of the 
 | **Code execution** | Runs model-written code in a sandbox, never on the host | Containerized runners, hosted sandboxes |
 | **Browser automation** | Drives real web UIs when no API exists | Playwright and the agent wrappers over it |
 | **Retrieval** | Grounds answers in private data — see [RAG](/docs/orchestration/rag/) | [Vector DBs](/docs/infrastructure/vector-db/); graph stores for [GraphRAG](/docs/orchestration/rag-2-0/) |
-| **Memory & state** | Carries context across steps and sessions — see [State Management](/docs/orchestration/state-management/) | Redis, Postgres with pgvector |
+| **Memory & state** | Carries context across steps and sessions — see [State Management](/docs/orchestration/state-management/) and [Agent Memory](/docs/orchestration/memory/) | Redis, Postgres with pgvector |
 | **Durable execution** | Survives restarts for runs measured in hours, not seconds | Workflow engines with persistent state |
 | **Output validation** | Enforces the schema and the policy on what comes back | Schema validation, [guardrail frameworks](/docs/governance/guardrails/) |
 | **Observability** | Traces, costs, and evaluation over live runs | [OpenTelemetry-based tracing](/docs/governance/monitoring/), LLM-specific platforms |

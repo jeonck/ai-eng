@@ -5,6 +5,8 @@ weight: 6
 
 Strategies for maintaining continuity of reasoning across complex agent workflows
 
+This page covers state *within* a run. For what an agent retains between sessions — conversation, episodic, semantic, and procedural memory — see [Agent Memory](/docs/orchestration/memory/).
+
 ## Why State Management Matters
 
 In complex workflows, the key is managing the **continuity of reasoning** — having the AI remember prior steps and logically move on to the next one.
