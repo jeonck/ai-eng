@@ -5,6 +5,8 @@ weight: 7
 
 Choosing and tuning vector databases for semantic search
 
+The same store usually ends up serving two workloads: document retrieval for [RAG](/docs/orchestration/rag/), and [episodic memory](/docs/orchestration/memory/) for agents. They tune differently — a document corpus is written in bulk and read often, while memory is written continuously, superseded, and must be deletable per user. Plan for expiry and per-subject deletion before the memory workload arrives, not after.
+
 ## How a Vector DB Works
 
 ```mermaid
