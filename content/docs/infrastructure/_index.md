@@ -34,7 +34,7 @@ flowchart LR
 | **AI model benchmarking** | Quantitative analysis of intelligence, speed, and price based on Artificial Analysis |
 | **Frontier benchmarks & evaluation** | What ARC-AGI, HLE, SWE-bench and agentic suites measure, and how to read a leaderboard |
 | **Data pipelines** | Real-time data collection and cleaning for AI training and inference |
-| **Vector DB** | Optimizing vector databases for semantic search |
+| **Vector DB** | Optimizing vector databases for semantic search, and the store behind [agent episodic memory](/docs/orchestration/memory/) |
 | **MCP servers** | Context management based on the Model Context Protocol |
 
 ## Core strategy: the model mix
@@ -54,6 +54,7 @@ The goal is not simply to "own" models — it's to run a **model mix strategy** 
 - [ ] Have we chosen the right strategy among fine-tuning, prompt engineering, and RAG?
 - [ ] Do we evaluate model changes against our own eval set rather than against public leaderboards?
 - [ ] Are MCP servers providing context reliably?
+- [ ] Do the stores holding agent memory have a retention and deletion policy, or do they only grow?
 
 {{< cards >}}
   {{< card link="computing" title="Compute Resource Management" icon="server" >}}
