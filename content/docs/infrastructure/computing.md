@@ -97,8 +97,8 @@ The levers above only make sense once you see that inference runs in two phases 
 
 | Phase | What it does | Bound by |
 |---|---|---|
-| **Prefill** | Processes the whole prompt at once to produce the first token, computing attention over every input position in parallel | **Compute** — large matrix multiplications saturate the GPU's math units |
-| **Decode** | Generates one token per step, each step attending over everything so far | **Memory bandwidth** — a single token's worth of math requires reading the entire model's weights plus the KV cache |
+| **Prefill** | Processes the whole prompt at once to produce the first token, computing attention over every input position in parallel — and populating the KV cache in the process | **Compute** — large matrix multiplications saturate the GPU's math units |
+| **Decode** | Generates one token per step, each step attending over everything so far by reading the cache prefill left behind and appending its own entry to it | **Memory bandwidth** — a single token's worth of math requires reading the entire model's weights plus the KV cache |
 
 This asymmetry is why batching is the central optimization. During decode the GPU spends most of its time waiting on memory, so adding more sequences to the in-flight batch costs almost nothing in extra time — the weights were being read anyway. Throughput scales with batch size until VRAM or bandwidth runs out, which is the order-of-magnitude difference between a request loop and a batching engine.
 
@@ -106,7 +106,7 @@ This asymmetry is why batching is the central optimization. During decode the GP
 
 ### KV cache — the dominant consumer of VRAM
 
-The [KV cache](/docs/infrastructure/models/transformer/) is what makes decoding tractable: keys and values for earlier tokens are stored instead of recomputed. The cost is memory, and it is not a rounding error:
+The [KV cache](/docs/infrastructure/models/transformer/) is what makes decoding tractable: keys and values for earlier tokens are stored instead of recomputed. Without it, every step would have to re-process the entire context to emit one more token, so the cost per token would grow with the text already written and the work to finish a response would grow quadratically with its length. With it, prefill writes the cache once and each decode step appends a single entry. The cost is memory, and it is not a rounding error:
 
 ```
 KV bytes per token ≈ 2 (K and V) × layers × kv_heads × head_dim × bytes_per_element
