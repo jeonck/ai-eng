@@ -198,6 +198,8 @@ The shape of these tools has changed three times in short order — plain chat, 
 | **Review routing** | Decides what reaches a human, which is the bottleneck regardless of which tool is in fashion |
 | **An internal team that owns the loop** | Model and tool choices change quarterly; the people who understand your system's constraints are what makes the next change cheap |
 
+For the opinionated version of this last argument — why it has to be an in-house builder team and what that means for large organizations — see the blog post [Plan Mode Didn't Die — It Moved Inside the Loop](/blog/plan-mode-moved-inside-the-loop/).
+
 ## Tool Calling Design Principles
 
 ### Good Tool Design
