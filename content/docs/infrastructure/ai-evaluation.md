@@ -99,11 +99,14 @@ When a model is announced, the scores quoted are chosen by the vendor. This is t
 | **Knowledge & reasoning** | **GPQA Diamond**, **Humanity's Last Exam**, **MMLU-Pro** | HLE spans 100+ subjects with expert-written questions; a large fraction is multimodal |
 | **Math** | **FrontierMath**, **AIME**, **MathArena** | FrontierMath is held privately and tiered by difficulty; MathArena scores competitions *after* the model's cutoff to avoid contamination |
 | **Abstraction** | **ARC-AGI-2 / -3** | Novel-task reasoning rather than recall — see above |
-| **Coding** | **SWE-bench Verified**, **SWE-bench Pro**, **LiveCodeBench**, **SciCode** | Verified is the human-filtered subset of SWE-bench; LiveCodeBench rotates in fresh problems continuously |
+| **Coding** | **SWE-bench Verified**, **SWE-bench Pro**, **FrontierSWE**, **LiveCodeBench**, **SciCode** | Verified is the human-filtered subset of SWE-bench; LiveCodeBench rotates in fresh problems continuously |
 | **Terminal & tools** | **Terminal-Bench**, **τ-bench** | Deterministic grading via exit codes, file diffs, and output matching |
 | **Computer use** | **OSWorld 2.0**, **OSWorld-Verified**, **WebArena** | The agent drives a real desktop or browser from screenshots, graded on machine state — see above |
-| **Long context** | **AA-LCR**, needle-and-reasoning variants | Retrieval over long inputs is largely solved; *reasoning* across the whole input is not |
+| **Long context** | **AA-LCR**, **GraphWalks**, needle-and-reasoning variants | Retrieval over long inputs is largely solved; *reasoning* across the whole input is not — GraphWalks BFS is a clean test of the difference, since it requires following edges through the context rather than finding one passage |
 | **Hallucination** | **AA-Omniscience**, **SimpleQA** | Score both what the model gets right and what it asserts wrongly — see [Guardrails & Security](/docs/governance/guardrails/) |
+| **Business operations** | **Vending-Bench 2**, **AutomationBench** | Long-horizon coherence in a simulated business, and cross-application workflow orchestration graded on final state — see the [five-model snapshot](#reading-the-table) below |
+| **Multimodal understanding** | **Chartography**, **Blueprint-Bench 2** | Newer suites with little public documentation; read the provenance notes before quoting them |
+| **Cybersecurity** | **ExploitGym**, **SEC-bench Pro**, **CWE-bench** | Whether an agent can find, exploit, or patch real vulnerabilities — a capability score and a misuse-risk signal at once |
 | **Economic value** | **GDPval** | 1,300+ tasks drawn from the real deliverables of 44 occupations across nine industries, graded by professionals against expert-produced work |
 
 ---
@@ -135,6 +138,70 @@ Four things this table shows better than any argument:
 
 ---
 
+## Snapshot — a five-model comparison on the newest suites (October 2026)
+
+The September snapshot above follows single benchmarks across public leaderboards. This one is a different kind of artifact: **one table, seventeen benchmarks, eight capability areas, assembled by whoever made the chart.** It is worth reading twice — once for the numbers, once for how the table is built.
+
+{{< callout type="warning" >}}
+**Provenance.** This table reached the site author as an image. It names no publisher, date, or measurement conditions, and its top edge is cropped, so any footnote is not visible. The highlighted Gemini 4 Carbon column and its lead on 15 of 17 rows are consistent with a vendor launch chart, which would make the figures self-reported — that is an inference from the layout, not something the image states. Searches for independent results on these benchmarks found none for Gemini 4 Carbon and none for GPT-6 Astra, so treat every figure as unverified. Transcribed 2026-10-31; bold marks the best score in each row.
+{{< /callout >}}
+
+| Area | Benchmark · condition | Gemini 4 Carbon | Gemini 4 Argon | GPT-6 Astra | Claude Opus 5.5 | Claude Fable 5.1 |
+| :--- | :--- | ---: | ---: | ---: | ---: | ---: |
+| **Overall capability** | **AA Index v5.0** | **59** | 50 | 57 | 58 | 49 |
+|  | **Vals Index v2.2** | **70.4%** | 69.2% | 65.0% | 70.2% | — |
+| **Agentic coding** | **SWE-sweep** | **9.6%** | 4.3% | 9.5% | 3.6% | 2.9% |
+|  | **FrontierSWE 2** | 61.2% | 55.0% | **65.5%** | 62.3% | 56.3% |
+|  | **Terminal-Bench 4.0 (AA)** | **65.2%** | 57.1% | 59.1% | 59.6% | 52.0% |
+| **Computer use** | **Agents' Last Exam v1.1** · score | **77.4%** | 69.0% | 73.1% | 71.6% | — |
+|  | **OSWorld-2.1** · offline subset | 81.5% | 74.7% | 80.9% | **87.2%** | 76.8% |
+| **Knowledge work** | **AutomationBench** · Zapier | **53.9%** | 51.3% | 41.4% | 42.5% | 31.4% |
+|  | **Vending-Bench 2** · ending balance, USD | **$16,484** | $13,718 | $15,515 | $9,235 | $5,422 |
+| **Multimodal understanding** | **Chartography** | **72.5%** | 71.6% | 71.0% | 66.3% | 46.2% |
+|  | **Blueprint-Bench 2** · similarity | **58.6%** | 54.4% | 49.7% | 51.2% | 41.9% |
+| **Long-context reasoning** | **GraphWalks** · 256k–1M, BFS F1 | **96.2%** | 84.2% | 71.8% | 66.8% | 65.0% |
+| **Science & math** | **RiemannBench** | **80.0%** | 76.0% | 72.0% | 69.6% | 65.6% |
+|  | **Terminal-Bench-Science 0.1 (AA)** | **64.8%** | 52.9% | 63.3% | 59.0% | 43.3% |
+| **Cybersecurity** | **CWE-bench** · patching | **71.0%** | 68.0% | 68.0% | 67.0% | 58.0% |
+|  | **ExploitGym** · exploitability verification | **54.8%** | 42.0% | 42.4% | 34.5% | — |
+|  | **SEC-bench Pro** · vulnerability detection | **88.2%** | 83.4% | 85.4% | — | — |
+
+### Reading the table
+
+- **Fifteen of seventeen rows go to Gemini 4 Carbon, but several of those leads are thin.** On four rows the margin is a point or less — SWE-sweep (+0.1), Vals Index (+0.2), Chartography (+0.9), AA Index (+1) — small enough that a different harness or a rerun could reorder them. The gaps large enough to matter are ExploitGym (+12.4 over the next model), GraphWalks (+12.0), Terminal-Bench 4.0 (+5.6), and Agents' Last Exam (+4.3).
+- **The two rows it trails are the two the chart itself highlights:** FrontierSWE 2, where GPT-6 Astra leads 65.5% to 61.2%, and the OSWorld-2.1 offline subset, where Claude Opus 5.5 leads 87.2% to 81.5%.
+- **The newest suites are the ones with headroom.** SWE-sweep tops out at 9.6%, AutomationBench at 53.9%, ExploitGym at 54.8%. On Vending-Bench 2 the best ending balance is $16,484, against Andon Labs's own estimate that roughly $63K is achievable over the simulated year — the leader is nowhere near the ceiling.
+- **Benchmarks get harder by versioning, and the version is part of the score.** Nine of the seventeen rows carry a version or revision in their name. The September snapshot has Terminal-Bench 2.0's leader at 91.9%; the best score on Terminal-Bench 4.0 here is 65.2% — a harder test, not a worse model, and likely a different harness, since "(AA)" presumably marks Artificial Analysis's own run. Going the other way, the OSWorld-2.1 offline subset tops out at 87.2% while the OSWorld 2.0 leader above sits at 72.6%: a subset of a newer revision, not the same test. A score without its benchmark, version, subset, and harness is not reproducible.
+- **The comparison set is the chart author's choice.** Models that lead rows elsewhere on this page — GPT-5.6 Sol, Claude Mythos 5, Claude Opus 5 — are not in the table. Five cells are also blank, four of them for Claude Fable 5.1; a dash means *not reported*, not zero.
+- **Reasoning effort is part of the result, and the table does not state it.** An article citing a different version of the Artificial Analysis index (v4.3.2) reports [Gemini 4 Argon at 52.56 on high effort and Claude Opus 5.5 at 57.62 at max effort](https://www.orcarouter.ai/pt/blog/gemini-4-vs-claude-opus-5-5) — the same model scores differently at different settings. The table's 50 and 58 for those two models are in the same order at a different version, which is mildly reassuring and proves nothing. The source is an aggregator, so weigh it accordingly.
+
+### What the newer suites measure
+
+For nine of the seventeen rows, no primary description could be found. That is worth knowing before quoting them: a score on a benchmark whose task, grader, and subset you cannot read is a number, not evidence.
+
+| Benchmark | What it measures | What could be verified |
+| :--- | :--- | :--- |
+| **AA Index v5.0**, **Vals Index v2.2** | Composite scores from two independent evaluators | The [AI Model Benchmarking](/docs/infrastructure/ai-model-benchmark/) page describes Intelligence Index v4.0; scores do not carry across versions |
+| **SWE-sweep** | Listed as a coding and agentic benchmark | Aggregator listing only, and it flags its own results as unreliable — [BenchmarkList](https://benchmarklist.com/benchmarks/swe_sweep/) |
+| **FrontierSWE 2** | Hard, long-horizon software-engineering tasks from real technical domains; v2 is listed as 34 ultra-long-horizon engineering and research tasks, five trials each | [GitHub](https://github.com/Proximal-Labs/frontier-swe) and [Epoch AI](https://epoch.ai/benchmarks/frontierswe); the task count comes from an aggregator ([BenchmarkList](https://benchmarklist.com/benchmarks/frontierswe_v2/)) |
+| **Terminal-Bench 4.0 (AA)** | Successor to the terminal-task benchmark covered above as Terminal-Bench 2.0 | Version number only; no primary description found |
+| **Agents' Last Exam v1.1** | Grouped under computer use in the table | Nothing found |
+| **OSWorld-2.1 · offline subset** | Descends from the OSWorld line — see the OSWorld 2.0 section above | No description of 2.1, or of what "offline" excludes, found |
+| **AutomationBench** | Zapier's test of cross-application workflow orchestration: the agent discovers REST API endpoints (about 500 across 47 apps) and is graded only on the final state of the simulated apps | [arXiv 2604.18934](https://arxiv.org/abs/2604.18934) |
+| **Vending-Bench 2** | Andon Labs's simulation of running a vending business for a year, testing long-term coherence against adversarial suppliers; scored here as ending account balance | [Andon Labs](https://andonlabs.com/evals/vending-bench-2) |
+| **Chartography** | The name suggests chart reading | Nothing found |
+| **Blueprint-Bench 2** | The table scores it as a similarity measure | Nothing found |
+| **GraphWalks** | OpenAI's benchmark: run a breadth-first search over a graph described in a very long prompt, scored as set-F1 over the returned node IDs. BFS tasks need intermediate steps, unlike the retrieval-like "parents" tasks. Prompts and solutions are public, so contamination is a standing concern | [Epoch AI review](https://epoch.ai/benchmarks/graphwalks/review) |
+| **RiemannBench** | Grouped under science and math in the table | Nothing found |
+| **Terminal-Bench-Science 0.1 (AA)** | Version 0.1 marks an early release | Nothing found |
+| **CWE-bench · patching** | The table scores it on patching | Listing page only — [BenchmarkList](https://benchmarklist.com/benchmarks/cwe_bench/) |
+| **ExploitGym** | Whether an agent can extend a vulnerability trigger into a working exploit: 898 instances from userspace programs, the V8 engine, and the Linux kernel, with configurable defenses | [arXiv 2605.11086](https://arxiv.org/abs/2605.11086) |
+| **SEC-bench Pro** | Extends SEC-bench to long-horizon security tasks on JavaScript engines: 183 validated instances (103 V8, 80 SpiderMonkey). The table labels it vulnerability detection while the paper frames the tasks more broadly — check which task type a score covers | [arXiv 2605.26548](https://arxiv.org/abs/2605.26548) |
+
+If you copy a number from a chart like this into a decision, copy its benchmark, version, subset, harness, and reasoning-effort setting beside it — and re-run the part that matters on your own tasks.
+
+---
+
 ## Reading a leaderboard without being fooled
 
 | Trap | What it looks like | What to do |
@@ -146,6 +213,9 @@ Four things this table shows better than any argument:
 | **Self-reported scores** | Vendor-run evaluation with an unspecified setup | Cross-check against an independent evaluator such as [Artificial Analysis](https://artificialanalysis.ai/) |
 | **Cost blindness** | A top score achieved with enormous per-task compute | Read accuracy together with cost and latency, the way ARC-AGI reports it |
 | **Private benchmarks** | Held-out sets that cannot be independently reproduced | They resist contamination but require trusting the maintainer — treat them as one signal, not the signal |
+| **Vendor-chosen comparison** | A launch chart in which the vendor's own model leads nearly every row | The author picked both the rivals and the benchmarks; check who and what was left out, and which rows the vendor does *not* lead |
+| **Version and subset labels** | "OSWorld-2.1 · offline subset", "Terminal-Bench 4.0 (AA)" | The unit being scored is benchmark + version + subset + harness; never compare across any of them |
+| **Blank cells** | A dash where a model's score should be | It means *not reported*, not zero — and an uneven pattern of blanks changes what the rows can be compared on |
 
 The practical rule is **triangulation**: a static academic benchmark, a human-preference arena, and an agentic suite. Where all three agree, the ranking is probably real. Where they disagree, the disagreement is usually the interesting information.
 
@@ -160,6 +230,7 @@ The practical rule is **triangulation**: a static academic benchmark, a human-pr
 | **From single-turn to long-horizon** | Tasks measured in hours of agent work, with partial credit and checkpoints — OSWorld 2.0 workflows take a human about 1.6 hours and hundreds of agent tool calls | Reliability compounds: a 95%-per-step agent finishes a 50-step task less than one time in ten |
 | **From static to live** | Continuously refreshed problem sets and post-cutoff competitions | Contamination resistance becomes a property of the benchmark's operating model, not its content |
 | **From capability to value** | **GDPval**-style evaluation against real professional deliverables | Connects model choice to [business impact](/docs/business/) rather than to a score with no unit |
+| **From helpfulness to risk-relevant capability** | Security suites such as ExploitGym measure whether an agent can turn a vulnerability into a working exploit | They quantify what a model could do if misused as well as what it can do for a security team, so they inform [guardrails and governance](/docs/governance/guardrails/) decisions, not only model selection |
 | **Goodhart pressure** | Benchmarks with verifiable rewards are also excellent RL training targets | A benchmark used for training stops measuring generalization; held-out and rotating sets are the only defense |
 
 ---
@@ -181,6 +252,7 @@ flowchart TD
 
 - [ ] Identify which two or three benchmarks actually correspond to your workload — ignore the rest of the announcement
 - [ ] Confirm the score is `pass@1` under a harness comparable to the one you will run
+- [ ] Record the benchmark, version, subset, harness, and reasoning-effort setting next to every score you copy into a document
 - [ ] Check the same model on an independent evaluator, not only the vendor's own numbers
 - [ ] Read cost and latency alongside accuracy before shortlisting
 - [ ] Verify against a contamination-resistant benchmark if the task resembles a well-known public dataset

@@ -27,6 +27,8 @@ Every model is compared simultaneously along the following three axes.
 
 The **Artificial Analysis Intelligence Index** is a weighted average across 10 independent tasks.
 
+> **Version note**: this section describes Intelligence Index v4.0. Newer comparison charts cite v5.0, and the component list may have changed — scores are not comparable across versions. See [Frontier Benchmarks & Evaluation Trends](/docs/infrastructure/ai-evaluation/) for how to read a chart that mixes versions.
+
 | Benchmark | Measured area |
 |---|---|
 | **GDPval-AA** | Ability to perform real economic-value tasks via web/shell access |
